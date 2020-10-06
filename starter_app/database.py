@@ -1,25 +1,35 @@
+from app.models import User
+from app import app, db
 from dotenv import load_dotenv
 load_dotenv()
 
-from app import app, db
-from app.models import User
 
 with app.app_context():
-  db.drop_all()
-  db.create_all()
+    db.drop_all()
+    db.create_all()
 
-  ian = User(username = 'Ian', email = 'ian@aa.io')
-  javier = User(username = 'Javier', email = 'javier@aa.io')
-  dean = User(username = 'Dean', email = 'dean@aa.io')
-  angela = User(username = 'Angela', email = 'angela@aa.io')
-  soonmi = User(username = 'Soon-Mi', email = 'soonmi@aa.io')
-  alissa = User(username = 'Alissa', email = 'alissa@aa.io')
+    demo = User(username='DemoUser', firstName='demo',
+                lastName='user', email='demo@aa.io', password='password')
+    ian = User(username='Ian', firstName='demo', lastName='user',
+               email='ian@aa.io', password='password')
+    javier = User(username='Javier', firstName='demo',
+                  lastName='user',  email='javier@aa.io', password='password')
+    dean = User(username='Dean', firstName='demo',
+                lastName='user', email='dean@aa.io', password='password')
+    angela = User(username='Angela', firstName='demo',
+                  lastName='user', email='angela@aa.io', password='password')
+    soonmi = User(username='Soon-Mi', firstName='demo',
+                  lastName='user', email='soonmi@aa.io',
+                  password='password')
+    alissa = User(username='Alissa', firstName='demo',
+                  lastName='user', email='alissa@aa.io', password='password')
 
-  db.session.add(ian)
-  db.session.add(javier)
-  db.session.add(dean)
-  db.session.add(angela)
-  db.session.add(soonmi)
-  db.session.add(alissa)
+    db.session.add(demo)
+    db.session.add(ian)
+    db.session.add(javier)
+    db.session.add(dean)
+    db.session.add(angela)
+    db.session.add(soonmi)
+    db.session.add(alissa)
 
-  db.session.commit()
+    db.session.commit()
