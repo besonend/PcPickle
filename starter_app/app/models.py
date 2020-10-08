@@ -44,18 +44,27 @@ class Build(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     title = db.Column(db.String(40), nullable=False)
     description = db.Column(db.String(2000))
-    caseId = db.Column(db.Integer, nullable=False, db.ForeignKey("cases.id"))
-    motherBoardId = db.Column(db.Integer, nullable=False, db.ForeignKey("motherBoards.id"))  # noqa
-    cpuId = db.Column(db.Integer, nullable=False, db.ForeignKey("cpus.id"))
-    cpuCoolerId = db.Column(db.Integer, nullable=False, db.ForeignKey("coolers.id"))  # noqa
-    hardDriveId = db.Column(db.Integer, nullable=False, db.ForeignKey("hardDrives.id"))  # noqa
-    ramId = db.Column(db.Integer, nullable=False, db.ForeignKey("ram.id"))
-    gpuId = db.Column(db.Integer, nullable=False, db.ForeignKey("gpus.id"))
-    powerSupplyId = db.Column(db.Integer, nullable=False, db.ForeignKey("powerSupplies.id"))  # noqa
+    caseId = db.Column(db.Integer, db.ForeignKey("cases.id"))
+    motherBoardId = db.Column(db.Integer, db.ForeignKey("motherBoards.id"))  # noqa
+    cpuId = db.Column(db.Integer, db.ForeignKey("cpus.id"))
+    coolerId = db.Column(db.Integer, db.ForeignKey("coolers.id"))  # noqa
+    hardDriveId = db.Column(db.Integer, db.ForeignKey("hardDrives.id"))  # noqa
+    ramId = db.Column(db.Integer, db.ForeignKey("ram.id"))
+    gpuId = db.Column(db.Integer, db.ForeignKey("gpus.id"))
+    powerSupplyId = db.Column(db.Integer, db.ForeignKey("powerSupplies.id"))  # noqa
     networkCardId = db.Column(db.Integer, db.ForeignKey("networkCards.id"))
     user_id = db.Column(db.Integer, db.ForeignKey("users.id"))
 
     user = db.relationship("User", back_populates="build")
+    case = db.relationship("Case", back_populates="build")
+    motherBoard = db.relationship("MotherBoard", back_populates="build")
+    cpu = db.relationship("CPU", back_populates="build")
+    cooler = db.relationship("Cooler", back_populates="build")
+    hardDrive = db.relationship("HardDrive", back_populates="build")
+    ram = db.relationship("RAM", back_populates="build")
+    gpu = db.relationship("GPU", back_populates="build")
+    powerSupply = db.relationship("PowerSupply", back_populates="build")
+    networkCard = db.relationship("NetworkCard", back_populates="build")
 
     def to_dict(self):
         return {
@@ -63,6 +72,15 @@ class Build(db.Model):
             "title": self.title,
             "description": self.description,
             "user_id": self.user_id,
+            "caseId": self.caseId,
+            "motherBoardId": self.motherBoardId,
+            "cpuId": self.cpuId,
+            "coolerId": self.coolerId,
+            "hardDriveId": self.hardDriveId,
+            "ramId": self.ramId,
+            "gpuId": self.gpuId,
+            "powerSupplyId": self.powerSupplyId,
+            "networkCardId": self.networkCardId,
             "user": self.user.id,
         }
 
@@ -72,15 +90,19 @@ class Case(db.Model):
 
     id = db.Column(db.Integer, primary_key=True)
     name = db.Column(db.String(40), nullable=False)
-    brand = db.Column(db.String(40), nullable=False)
+    manufacturer = db.Column(db.String(40), nullable=False)
+    pictureUrl = db.Column(db.String)
     size = db.Column(db.Integer, nullable=False)
     price = db.Column(db.Integer, nullable=False)
+
+    build = db.relationship("Build", back_populates="case")
 
     def to_dict(self):
         return {
             "id": self.id,
             "name": self.name,
-            "brand": self.brand,
+            "manufacturer": self.manufacturer,
+            "pictureUrl": self.pictureUrl,
             "size": self.size,
             "price": self.price,
         }
@@ -91,15 +113,19 @@ class MotherBoard(db.Model):
 
     id = db.Column(db.Integer, primary_key=True)
     name = db.Column(db.String(40), nullable=False)
-    brand = db.Column(db.String(40), nullable=False)
+    manufacturer = db.Column(db.String(40), nullable=False)
+    pictureUrl = db.Column(db.String)
     size = db.Column(db.Integer, nullable=False)
     price = db.Column(db.Integer, nullable=False)
+
+    build = db.relationship("Build", back_populates="motherBoard")
 
     def to_dict(self):
         return {
             "id": self.id,
             "name": self.name,
-            "brand": self.brand,
+            "manufacturer": self.manufacturer,
+            "pictureUrl": self.pictureUrl,
             "size": self.size,
             "price": self.price,
         }
@@ -110,15 +136,19 @@ class CPU(db.Model):
 
     id = db.Column(db.Integer, primary_key=True)
     name = db.Column(db.String(40), nullable=False)
-    brand = db.Column(db.String(40), nullable=False)
+    manufacturer = db.Column(db.String(40), nullable=False)
+    pictureUrl = db.Column(db.String)
     clockSpeed = db.Column(db.Integer, nullable=False)
     price = db.Column(db.Integer, nullable=False)
+
+    build = db.relationship("Build", back_populates="cpu")
 
     def to_dict(self):
         return {
             "id": self.id,
             "name": self.name,
-            "brand": self.brand,
+            "manufacturer": self.manufacturer,
+            "pictureUrl": self.pictureUrl,
             "clockSpeed": self.clockSpeed,
             "price": self.price,
         }
@@ -129,15 +159,19 @@ class Cooler(db.Model):
 
     id = db.Column(db.Integer, primary_key=True)
     name = db.Column(db.String(40), nullable=False)
-    brand = db.Column(db.String(40), nullable=False)
+    manufacturer = db.Column(db.String(40), nullable=False)
+    pictureUrl = db.Column(db.String)
     liquid = db.Column(db.Boolean, nullable=False)
     price = db.Column(db.Integer, nullable=False)
+
+    build = db.relationship("Build", back_populates="cooler")
 
     def to_dict(self):
         return {
             "id": self.id,
             "name": self.name,
-            "brand": self.brand,
+            "manufacturer": self.manufacturer,
+            "pictureUrl": self.pictureUrl,
             "liquid": self.liquid,
             "price": self.price,
         }
@@ -148,16 +182,20 @@ class HardDrive(db.Model):
 
     id = db.Column(db.Integer, primary_key=True)
     name = db.Column(db.String(40), nullable=False)
-    brand = db.Column(db.String(40), nullable=False)
+    manufacturer = db.Column(db.String(40), nullable=False)
+    pictureUrl = db.Column(db.String)
     SSD = db.Column(db.Boolean, nullable=False)
     gbSize = db.Column(db.Integer, nullable=False)
     price = db.Column(db.Integer, nullable=False)
+
+    build = db.relationship("Build", back_populates="hardDrive")
 
     def to_dict(self):
         return {
             "id": self.id,
             "name": self.name,
-            "brand": self.brand,
+            "manufacturer": self.manufacturer,
+            "pictureUrl": self.pictureUrl,
             "SSD": self.SSD,
             "gbSize": self.gbSize,
             "price": self.price,
@@ -169,15 +207,19 @@ class RAM(db.Model):
 
     id = db.Column(db.Integer, primary_key=True)
     name = db.Column(db.String(40), nullable=False)
-    brand = db.Column(db.String(40), nullable=False)
+    manufacturer = db.Column(db.String(40), nullable=False)
+    pictureUrl = db.Column(db.String)
     gbSize = db.Column(db.Integer, nullable=False)
     price = db.Column(db.Integer, nullable=False)
+
+    build = db.relationship("Build", back_populates="ram")
 
     def to_dict(self):
         return {
             "id": self.id,
             "name": self.name,
-            "brand": self.brand,
+            "manufacturer": self.manufacturer,
+            "pictureUrl": self.pictureUrl,
             "gbSize": self.gbSize,
             "price": self.price,
         }
@@ -188,15 +230,19 @@ class GPU(db.Model):
 
     id = db.Column(db.Integer, primary_key=True)
     name = db.Column(db.String(40), nullable=False)
-    brand = db.Column(db.String(40), nullable=False)
+    manufacturer = db.Column(db.String(40), nullable=False)
+    pictureUrl = db.Column(db.String)
     VRAM = db.Column(db.Integer, nullable=False)
     price = db.Column(db.Integer, nullable=False)
+
+    build = db.relationship("Build", back_populates="gpu")
 
     def to_dict(self):
         return {
             "id": self.id,
             "name": self.name,
-            "brand": self.brand,
+            "manufacturer": self.manufacturer,
+            "pictureUrl": self.pictureUrl,
             "VRAM": self.VRAM,
             "price": self.price,
         }
@@ -207,15 +253,19 @@ class PowerSupply(db.Model):
 
     id = db.Column(db.Integer, primary_key=True)
     name = db.Column(db.String(40), nullable=False)
-    brand = db.Column(db.String(40), nullable=False)
+    manufacturer = db.Column(db.String(40), nullable=False)
+    pictureUrl = db.Column(db.String)
     watts = db.Column(db.Integer, nullable=False)
     price = db.Column(db.Integer, nullable=False)
+
+    build = db.relationship("Build", back_populates="powerSupply")
 
     def to_dict(self):
         return {
             "id": self.id,
             "name": self.name,
-            "brand": self.brand,
+            "manufacturer": self.manufacturer,
+            "pictureUrl": self.pictureUrl,
             "watts": self.watts,
             "price": self.price,
         }
@@ -226,13 +276,17 @@ class NetworkCard(db.Model):
 
     id = db.Column(db.Integer, primary_key=True)
     name = db.Column(db.String(40), nullable=False)
-    brand = db.Column(db.String(40), nullable=False)
+    manufacturer = db.Column(db.String(40), nullable=False)
+    pictureUrl = db.Column(db.String)
     price = db.Column(db.Integer, nullable=False)
+
+    build = db.relationship("Build", back_populates="networkCard")
 
     def to_dict(self):
         return {
             "id": self.id,
             "name": self.name,
-            "brand": self.brand,
+            "manufacturer": self.manufacturer,
+            "pictureUrl": self.pictureUrl,
             "price": self.price,
         }

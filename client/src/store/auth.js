@@ -24,28 +24,41 @@ export const newUser = (user) => ({
     user
 })
 
+export const registerErrors = (errors) => {
+    return ({
+        type: REGISTER_ERRORS,
+        errors
+    })
+}
+
+export const clearErrors = () => {
+    return ({
+        type: CLEAR_ERRORS,
+    })
+}
+
 export const login = (username, password) => async dispatch => {
-        if (!username || !password) {
-            return
-        }
-        const csrfToken = Cookies.get("XSRF-TOKEN");
-        const res = await fetch('/api/session/', {
-            method: "put",
-            headers: {
-                "Content-Type": "application/json",
-                "X-CSRF-TOKEN": csrfToken,
-            },
-            body: JSON.stringify({ username, password })
-        });
-        const data = await res.json();
-        if (res.ok && !data["errors"]) {
-            dispatch(setUser(data));
-            res.data = data
-        } else {
-            res.errors = data["errors"]
-            dispatch(registerErrors(data["errors"]))
-        }
-        return res;
+    if (!username || !password) {
+        return
+    }
+    const csrfToken = Cookies.get("XSRF-TOKEN");
+    const res = await fetch('/api/session/', {
+        method: "put",
+        headers: {
+            "Content-Type": "application/json",
+            "X-CSRF-TOKEN": csrfToken,
+        },
+        body: JSON.stringify({ username, password })
+    });
+    const data = await res.json();
+    if (res.ok && !data["errors"]) {
+        dispatch(setUser(data));
+        res.data = data
+    } else {
+        res.errors = data["errors"]
+        dispatch(registerErrors(data["errors"]))
+    }
+    return res;
 };
 
 export const signup = (username, email, password) => {
@@ -74,18 +87,7 @@ export const signup = (username, email, password) => {
     };
 }
 
-export const registerErrors = (errors) => {
-    return ({
-        type: REGISTER_ERRORS,
-        errors
-    })
-}
 
-export const clearErrors = () => {
-    return ({
-        type: CLEAR_ERRORS,
-    })
-}
 
 export const logout = () => async dispatch => {
     const res = await fetch('/api/session/logout', {
@@ -103,8 +105,8 @@ export const logout = () => async dispatch => {
 }
 
 export default function authReducer(state = { user: { id: null } }, action) {
-    const newState = Object.assign({},state)
-    const currentErrors = Object.assign({},state.errors)
+    const newState = Object.assign({}, state)
+    const currentErrors = Object.assign({}, state.errors)
     switch (action.type) {
         case SET_USER:
             newState.user = action.user
@@ -112,13 +114,11 @@ export default function authReducer(state = { user: { id: null } }, action) {
         case SIGNUP:
             return action.user
         case REGISTER_ERRORS:
-            console.log(action.errors)
             newState.errors = currentErrors
             const errorIds = Object.keys(action.errors)
-            errorIds.forEach(errorId =>{
+            errorIds.forEach(errorId => {
                 newState.errors[errorId] = action.errors[errorId]
             })
-            console.log(newState)
             return newState;
         case REMOVE_USER:
             return { user: { id: null } };

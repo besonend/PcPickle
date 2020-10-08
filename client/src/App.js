@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { BrowserRouter, Switch } from 'react-router-dom';
+import { BrowserRouter, Route, Switch } from 'react-router-dom';
 import {setUser} from './store/auth'
 import SignupPage from './pages/SignupPage';
 import LoginPage from './pages/LoginPage';
@@ -7,6 +7,13 @@ import { CssBaseline } from '@material-ui/core';
 import { useDispatch } from 'react-redux';
 import { useSelector } from 'react-redux';
 import { AuthRoute } from './components/utils/Routes';
+import Home from './pages/Home';
+import CreatePart from './pages/CreatePart';
+import NavBar from './components/NavBar';
+import PartsBar from './components/PartsBar';
+import Parts from './pages/Parts';
+import Part from './pages/Part';
+import Build from './pages/Build';
 
 
 function App() {
@@ -33,10 +40,16 @@ function App() {
     <>
         <CssBaseline/>
         <BrowserRouter>
+            <NavBar />
+            <PartsBar />
             <Switch>
                 <AuthRoute exact path='/signup' component={SignupPage} currentUserId={currentUser.id}/>
                 <AuthRoute exact path='/login' component={LoginPage} currentUserId={currentUser.id}/>
-                <AuthRoute exact path='/' component={Home} currentUserId={currentUser.id}/>
+                <Route exact path='/create/:part' component={CreatePart} currentUserId={currentUser.id}/>
+                <Route exact path='/createbuild' component={Build} currentUserId={currentUser.id}/>
+                <Route exact path='/:part' component={Parts} currentUserId={currentUser.id}/>
+                <Route exact path='/:part/:id' component={Part} currentUserId={currentUser.id}/>
+                <Route exact path='/' component={Home} currentUserId={currentUser.id}/>
             </Switch>
         </BrowserRouter>
     </>
