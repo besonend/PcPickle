@@ -1,8 +1,7 @@
-import React, { useEffect, useState } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
+import React, { useState } from 'react';
+import { useDispatch } from 'react-redux';
 import TextField from '@material-ui/core/TextField';
 import { FormControl, Grid, InputLabel, MenuItem, Select } from '@material-ui/core';
-import { Redirect } from 'react-router-dom';
 import { makePart } from '../store/parts';
 
 

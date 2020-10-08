@@ -1,7 +1,6 @@
-import { AppBar, Button, Divider, Grid, Toolbar } from '@material-ui/core';
+import { AppBar, Button, Toolbar } from '@material-ui/core';
 import React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { NavLink } from 'react-router-dom';
 import { logout } from '../store/auth';
 import { makeStyles } from '@material-ui/core/styles';
 import pickle from '../images/pickle.png';
