@@ -1,8 +1,9 @@
 import React, { useState } from 'react';
 import { useDispatch } from 'react-redux';
 import TextField from '@material-ui/core/TextField';
-import { FormControl, Grid, InputLabel, MenuItem, Select } from '@material-ui/core';
+import { Box, Button, FormControl, Grid, InputLabel, MenuItem, Select } from '@material-ui/core';
 import { makePart } from '../store/parts';
+
 
 
 function CreatePart() {
@@ -21,7 +22,7 @@ function CreatePart() {
     const type = window.location.pathname.split('/')[2];
     let createHTML = '';
 
-    if (type === 'case') {
+    if (type === 'cases') {
         createHTML = (
             <>
                 <FormControl>
@@ -35,7 +36,7 @@ function CreatePart() {
             </>
         )
     }
-    else if (type === 'motherboard') {
+    else if (type === 'mobos') {
         createHTML = (
             <>
                 <FormControl>
@@ -49,7 +50,7 @@ function CreatePart() {
             </>
         )
     }
-    else if (type === 'cpu') {
+    else if (type === 'cpus') {
         createHTML = (
             <>
                 <FormControl>
@@ -68,21 +69,27 @@ function CreatePart() {
             SSD, gbSize,
             VRAM, watts));
         setPictureUrl("");
+        window.location.href = "/";
     }
 
     return (
-        <Grid>
-            <form method="POST" action="/api/parts" onSubmit={handleSubmit}>
-                <FormControl>
-                    <TextField type="text" placeholder="name" name="name" value={name} onChange={e => setName(e.target.value)} />
-                    <TextField type="text" placeholder="manufacturer" name="manufacturer" value={manufacturer} onChange={e => setManufacturer(e.target.value)} />
-                    <TextField type="url" placeholder="pictureUrl" name="pictureUrl" value={pictureUrl} onChange={e => setPictureUrl(e.target.value)} />
-                    <TextField type="number" placeholder="price" name="price" value={price} onChange={e => setPrice(e.target.value)} />
-                    {createHTML}
-                    <button type="submit">Create</button>
-                </FormControl>
-            </form>
+        <>
+        <h1 style={{ textAlign: "center" }}>Create {type.toUpperCase()}</h1>
+        <Grid container style={{ justifyContent: "center", marginTop: "5%" }}>
+            <Box border={1} style={{ padding: "2%" }}>
+                <form method="POST" action="/api/parts" onSubmit={handleSubmit}>
+                    <FormControl>
+                        <TextField type="text" placeholder="name" name="name" value={name} onChange={e => setName(e.target.value)} />
+                        <TextField type="text" placeholder="manufacturer" name="manufacturer" value={manufacturer} onChange={e => setManufacturer(e.target.value)} />
+                        <TextField type="url" placeholder="pictureUrl" name="pictureUrl" value={pictureUrl} onChange={e => setPictureUrl(e.target.value)} />
+                        <TextField type="number" placeholder="price" name="price" value={price} onChange={e => setPrice(e.target.value)} />
+                        {createHTML}
+                        <Button type="submit">Create</Button>
+                    </FormControl>
+                </form>
+            </Box>
         </Grid>
+        </>
     );
 }
 export default CreatePart;

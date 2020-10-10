@@ -6,11 +6,14 @@ from sqlalchemy import or_
 builds = Blueprint('builds', __name__)
 
 
-@builds.route("/<user_id>")
-def user_builds(user_id):
-    builds = db.session.query(Build).filter(or_(Board.user_id == user_id,
-                                                Board.user_id == 1))
-    format_builds = {"builds": {}}
+@builds.route("/<userId>")
+def get_builds(userId):
+    builds = db.session.query(Build).filter(Build.user_id == 1)
+    format_builds = {"builds": {}, "userbuilds": {}}
+    if(userId != '1'):
+        userbuilds = db.session.query(Build).filter(Build.user_id == userId)
+        for userbuild in userbuilds:
+            format_builds["userbuilds"][userbuild.id] = userbuild.to_dict()
     for build in builds:
         format_builds["builds"][build.id] = build.to_dict()
     return format_builds

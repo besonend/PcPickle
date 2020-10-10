@@ -14,6 +14,7 @@ import PartsBar from './components/PartsBar';
 import Parts from './pages/Parts';
 import Part from './pages/Part';
 import Build from './pages/Build';
+import Builds from './pages/Builds';
 
 
 function App() {
@@ -49,6 +50,8 @@ function App() {
                 <Route exact path='/createbuild' component={Build} currentUserId={currentUser.id}/>
                 <Route exact path='/:part' component={Parts} currentUserId={currentUser.id}/>
                 <Route exact path='/:part/:id' component={Part} currentUserId={currentUser.id}/>
+                <Route exact path='/builds' component={Builds} currentUserId={currentUser.id}/>
+                <Route exact path='/builds/:id' component={Build} currentUserId={currentUser.id}/>
                 <Route exact path='/' component={Home} currentUserId={currentUser.id}/>
             </Switch>
         </BrowserRouter>

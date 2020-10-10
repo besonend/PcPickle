@@ -1,8 +1,8 @@
 """empty message
 
-Revision ID: 72b9e3fe0d6f
-Revises:
-Create Date: 2020-10-07 13:11:28.415284
+Revision ID: c0cc8a409ca5
+Revises: 
+Create Date: 2020-10-10 11:36:17.530850
 
 """
 from alembic import op
@@ -10,7 +10,7 @@ import sqlalchemy as sa
 
 
 # revision identifiers, used by Alembic.
-revision = '72b9e3fe0d6f'
+revision = 'c0cc8a409ca5'
 down_revision = None
 branch_labels = None
 depends_on = None
@@ -25,7 +25,8 @@ def upgrade():
     sa.Column('pictureUrl', sa.String(), nullable=True),
     sa.Column('size', sa.Integer(), nullable=False),
     sa.Column('price', sa.Integer(), nullable=False),
-    sa.PrimaryKeyConstraint('id')
+    sa.PrimaryKeyConstraint('id'),
+    sa.UniqueConstraint('name')
     )
     op.create_table('coolers',
     sa.Column('id', sa.Integer(), nullable=False),
@@ -34,7 +35,8 @@ def upgrade():
     sa.Column('pictureUrl', sa.String(), nullable=True),
     sa.Column('liquid', sa.Boolean(), nullable=False),
     sa.Column('price', sa.Integer(), nullable=False),
-    sa.PrimaryKeyConstraint('id')
+    sa.PrimaryKeyConstraint('id'),
+    sa.UniqueConstraint('name')
     )
     op.create_table('cpus',
     sa.Column('id', sa.Integer(), nullable=False),
@@ -43,7 +45,8 @@ def upgrade():
     sa.Column('pictureUrl', sa.String(), nullable=True),
     sa.Column('clockSpeed', sa.Integer(), nullable=False),
     sa.Column('price', sa.Integer(), nullable=False),
-    sa.PrimaryKeyConstraint('id')
+    sa.PrimaryKeyConstraint('id'),
+    sa.UniqueConstraint('name')
     )
     op.create_table('gpus',
     sa.Column('id', sa.Integer(), nullable=False),
@@ -52,7 +55,8 @@ def upgrade():
     sa.Column('pictureUrl', sa.String(), nullable=True),
     sa.Column('VRAM', sa.Integer(), nullable=False),
     sa.Column('price', sa.Integer(), nullable=False),
-    sa.PrimaryKeyConstraint('id')
+    sa.PrimaryKeyConstraint('id'),
+    sa.UniqueConstraint('name')
     )
     op.create_table('hardDrives',
     sa.Column('id', sa.Integer(), nullable=False),
@@ -62,7 +66,8 @@ def upgrade():
     sa.Column('SSD', sa.Boolean(), nullable=False),
     sa.Column('gbSize', sa.Integer(), nullable=False),
     sa.Column('price', sa.Integer(), nullable=False),
-    sa.PrimaryKeyConstraint('id')
+    sa.PrimaryKeyConstraint('id'),
+    sa.UniqueConstraint('name')
     )
     op.create_table('motherBoards',
     sa.Column('id', sa.Integer(), nullable=False),
@@ -71,7 +76,8 @@ def upgrade():
     sa.Column('pictureUrl', sa.String(), nullable=True),
     sa.Column('size', sa.Integer(), nullable=False),
     sa.Column('price', sa.Integer(), nullable=False),
-    sa.PrimaryKeyConstraint('id')
+    sa.PrimaryKeyConstraint('id'),
+    sa.UniqueConstraint('name')
     )
     op.create_table('networkCards',
     sa.Column('id', sa.Integer(), nullable=False),
@@ -79,7 +85,8 @@ def upgrade():
     sa.Column('manufacturer', sa.String(length=40), nullable=False),
     sa.Column('pictureUrl', sa.String(), nullable=True),
     sa.Column('price', sa.Integer(), nullable=False),
-    sa.PrimaryKeyConstraint('id')
+    sa.PrimaryKeyConstraint('id'),
+    sa.UniqueConstraint('name')
     )
     op.create_table('powerSupplies',
     sa.Column('id', sa.Integer(), nullable=False),
@@ -88,7 +95,8 @@ def upgrade():
     sa.Column('pictureUrl', sa.String(), nullable=True),
     sa.Column('watts', sa.Integer(), nullable=False),
     sa.Column('price', sa.Integer(), nullable=False),
-    sa.PrimaryKeyConstraint('id')
+    sa.PrimaryKeyConstraint('id'),
+    sa.UniqueConstraint('name')
     )
     op.create_table('ram',
     sa.Column('id', sa.Integer(), nullable=False),
@@ -97,7 +105,8 @@ def upgrade():
     sa.Column('pictureUrl', sa.String(), nullable=True),
     sa.Column('gbSize', sa.Integer(), nullable=False),
     sa.Column('price', sa.Integer(), nullable=False),
-    sa.PrimaryKeyConstraint('id')
+    sa.PrimaryKeyConstraint('id'),
+    sa.UniqueConstraint('name')
     )
     op.create_table('users',
     sa.Column('id', sa.Integer(), nullable=False),

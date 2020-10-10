@@ -89,7 +89,7 @@ class Case(db.Model):
     __tablename__ = 'cases'
 
     id = db.Column(db.Integer, primary_key=True)
-    name = db.Column(db.String(40), nullable=False)
+    name = db.Column(db.String(40), nullable=False, unique=True)
     manufacturer = db.Column(db.String(40), nullable=False)
     pictureUrl = db.Column(db.String)
     size = db.Column(db.Integer, nullable=False)
@@ -112,7 +112,7 @@ class MotherBoard(db.Model):
     __tablename__ = 'motherBoards'
 
     id = db.Column(db.Integer, primary_key=True)
-    name = db.Column(db.String(40), nullable=False)
+    name = db.Column(db.String(40), nullable=False, unique=True)
     manufacturer = db.Column(db.String(40), nullable=False)
     pictureUrl = db.Column(db.String)
     size = db.Column(db.Integer, nullable=False)
@@ -135,7 +135,7 @@ class CPU(db.Model):
     __tablename__ = 'cpus'
 
     id = db.Column(db.Integer, primary_key=True)
-    name = db.Column(db.String(40), nullable=False)
+    name = db.Column(db.String(40), nullable=False, unique=True)
     manufacturer = db.Column(db.String(40), nullable=False)
     pictureUrl = db.Column(db.String)
     clockSpeed = db.Column(db.Integer, nullable=False)
@@ -158,7 +158,7 @@ class Cooler(db.Model):
     __tablename__ = 'coolers'
 
     id = db.Column(db.Integer, primary_key=True)
-    name = db.Column(db.String(40), nullable=False)
+    name = db.Column(db.String(40), nullable=False, unique=True)
     manufacturer = db.Column(db.String(40), nullable=False)
     pictureUrl = db.Column(db.String)
     liquid = db.Column(db.Boolean, nullable=False)
@@ -181,7 +181,7 @@ class HardDrive(db.Model):
     __tablename__ = 'hardDrives'
 
     id = db.Column(db.Integer, primary_key=True)
-    name = db.Column(db.String(40), nullable=False)
+    name = db.Column(db.String(40), nullable=False, unique=True)
     manufacturer = db.Column(db.String(40), nullable=False)
     pictureUrl = db.Column(db.String)
     SSD = db.Column(db.Boolean, nullable=False)
@@ -206,7 +206,7 @@ class RAM(db.Model):
     __tablename__ = 'ram'
 
     id = db.Column(db.Integer, primary_key=True)
-    name = db.Column(db.String(40), nullable=False)
+    name = db.Column(db.String(40), nullable=False, unique=True)
     manufacturer = db.Column(db.String(40), nullable=False)
     pictureUrl = db.Column(db.String)
     gbSize = db.Column(db.Integer, nullable=False)
@@ -229,7 +229,7 @@ class GPU(db.Model):
     __tablename__ = 'gpus'
 
     id = db.Column(db.Integer, primary_key=True)
-    name = db.Column(db.String(40), nullable=False)
+    name = db.Column(db.String(40), nullable=False, unique=True)
     manufacturer = db.Column(db.String(40), nullable=False)
     pictureUrl = db.Column(db.String)
     VRAM = db.Column(db.Integer, nullable=False)
@@ -252,7 +252,7 @@ class PowerSupply(db.Model):
     __tablename__ = 'powerSupplies'
 
     id = db.Column(db.Integer, primary_key=True)
-    name = db.Column(db.String(40), nullable=False)
+    name = db.Column(db.String(40), nullable=False, unique=True)
     manufacturer = db.Column(db.String(40), nullable=False)
     pictureUrl = db.Column(db.String)
     watts = db.Column(db.Integer, nullable=False)
@@ -275,7 +275,7 @@ class NetworkCard(db.Model):
     __tablename__ = 'networkCards'
 
     id = db.Column(db.Integer, primary_key=True)
-    name = db.Column(db.String(40), nullable=False)
+    name = db.Column(db.String(40), nullable=False, unique=True)
     manufacturer = db.Column(db.String(40), nullable=False)
     pictureUrl = db.Column(db.String)
     price = db.Column(db.Integer, nullable=False)
