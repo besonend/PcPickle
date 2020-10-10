@@ -1,10 +1,12 @@
 import { createStore, compose, combineReducers, applyMiddleware } from 'redux';
 import thunk from 'redux-thunk';
 import auth from './auth';
+import partsReducer from './parts';
 
 
 const rootReducer = combineReducers({
   auth,
+  partsReducer,
 });
 
 let storeEnhancer;

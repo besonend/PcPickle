@@ -53,7 +53,7 @@ function LoginPage() {
 
     return (
         <>
-            <div id="main-content-login">
+            <div  className={classes.root} >
                 <h1>Welcome to Pickle</h1>
                 <div style={{ display: "flex", flexDirection: "column" }}>
                     <button onClick={demoLogin}>Login As a Demo User</button>

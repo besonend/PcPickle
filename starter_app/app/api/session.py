@@ -18,7 +18,6 @@ def cur_user():
 @session.route("/", methods=["PUT"])
 def login():
     data = request.json
-    print(data)
     if not data:
         return {"errors": ""}
     user = User.query.filter(User.username == data['username']).first()
@@ -34,7 +33,7 @@ def login():
 @session.route('/logout', methods=["POST"])
 def logout():
     logout_user()
-    return redirect(url_for('.login'))
+    return redirect('/')
 
 
 @session.route('/', methods=["POST"])
