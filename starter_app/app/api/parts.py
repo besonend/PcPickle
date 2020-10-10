@@ -48,7 +48,7 @@ def get_parts():
     return format_parts
 
 
-@parts.route("/motherboard", methods=["POST"])
+@parts.route("/mobos", methods=["POST"])
 def create_mobo():
     data = request.json
     new_mobo = MotherBoard(
@@ -64,7 +64,7 @@ def create_mobo():
     return {"mobo": format_mobo}
 
 
-@parts.route("/case", methods=["POST"])
+@parts.route("/cases", methods=["POST"])
 def create_case():
     data = request.json
     new_case = Case(
@@ -96,7 +96,7 @@ def create_ram():
     return {"ram": format_ram}
 
 
-@parts.route("/gpu", methods=["POST"])
+@parts.route("/gpus", methods=["POST"])
 def create_gpu():
     data = request.json
     new_gpu = GPU(
@@ -112,7 +112,7 @@ def create_gpu():
     return {"gpu": format_gpu}
 
 
-@parts.route("/cpu", methods=["POST"])
+@parts.route("/cpus", methods=["POST"])
 def create_cpu():
     data = request.json
     new_cpu = CPU(
@@ -128,7 +128,7 @@ def create_cpu():
     return {"cpu": format_cpu}
 
 
-@parts.route("/cooler", methods=["POST"])
+@parts.route("/coolers", methods=["POST"])
 def create_cooler():
     data = request.json
     new_cooler = Cooler(
@@ -144,7 +144,7 @@ def create_cooler():
     return {"cooler": format_cooler}
 
 
-@parts.route("/networkCard", methods=["POST"])
+@parts.route("/networkCards", methods=["POST"])
 def create_networkCard():
     data = request.json
     new_networkCard = NetworkCard(
@@ -160,7 +160,7 @@ def create_networkCard():
     return {"networkCard": format_networkCard}
 
 
-@parts.route("/powerSupply", methods=["POST"])
+@parts.route("/powerSupplies", methods=["POST"])
 def create_powerSupply():
     data = request.json
     new_powerSupply = PowerSupply(
@@ -176,7 +176,7 @@ def create_powerSupply():
     return {"powerSupply": format_powerSupply}
 
 
-@parts.route("/hardDrive", methods=["POST"])
+@parts.route("/hardDrives", methods=["POST"])
 def create_hardDrive():
     data = request.json
     new_hardDrive = HardDrive(

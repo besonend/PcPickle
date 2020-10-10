@@ -8,7 +8,6 @@ const useStyles = makeStyles((theme) => ({
         backgroundColor: "#95b73c",
         justifyContent: "center",
         alignItems: "center",
-        margin: "0px",
     },
 
     link: {
@@ -23,37 +22,35 @@ function PartsBar() {
 
     return (
         <>
-
             <Grid container spacing={3} className={classes.bar}>
                 <Grid item>
-                    <NavLink to='/Cases' className={classes.link}>Cases</NavLink>
+                    <NavLink to='/cases' className={classes.link}>Cases</NavLink>
                 </Grid>
                 <Grid item>
-                    <NavLink to='/MotherBoards' className={classes.link}>Mother Boards</NavLink>
+                    <NavLink to='/mobos' className={classes.link}>Mother Boards</NavLink>
                 </Grid>
                 <Grid item>
-                    <NavLink to='/CPU' className={classes.link}>CPU</NavLink>
+                    <NavLink to='/cpus' className={classes.link}>CPU</NavLink>
                 </Grid>
                 <Grid item>
-                    <NavLink to='/RAM' className={classes.link}>RAM</NavLink>
+                    <NavLink to='/ram' className={classes.link}>RAM</NavLink>
                 </Grid>
                 <Grid item>
-                    <NavLink to='/PowerSupply' className={classes.link}>Power Supplies</NavLink>
+                    <NavLink to='/powerSupplies' className={classes.link}>Power Supplies</NavLink>
                 </Grid>
                 <Grid item>
-                    <NavLink to='/Cooler' className={classes.link}>Coolers</NavLink>
+                    <NavLink to='/coolers' className={classes.link}>Coolers</NavLink>
                 </Grid>
                 <Grid item>
-                    <NavLink to='/GPU' className={classes.link}>GPU</NavLink>
+                    <NavLink to='/gpus' className={classes.link}>GPU</NavLink>
                 </Grid>
                 <Grid item>
-                    <NavLink to='/NetworkCard' className={classes.link}>Network Cards</NavLink>
+                    <NavLink to='/networkCards' className={classes.link}>Network Cards</NavLink>
                 </Grid>
                 <Grid item>
-                    <NavLink to='/HardDrive' className={classes.link}>Hard Drives</NavLink>
+                    <NavLink to='/hardDrives' className={classes.link}>Hard Drives</NavLink>
                 </Grid>
             </Grid>
-            <Divider />
         </>
     );
 }

@@ -3,12 +3,13 @@ import React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { logout } from '../store/auth';
 import { makeStyles } from '@material-ui/core/styles';
-import pickle from '../images/pickle.png';
 
 const useStyles = makeStyles((theme) => ({
 
     appbar: {
         backgroundColor: "#553a0f",
+        margin: "0px",
+        width: "100%",
     },
 
     space: {
@@ -45,7 +46,7 @@ function NavBar() {
                 <Toolbar className={classes.space}>
                     <Button href="/">Home</Button>
                     <Button>
-                        <img src={pickle} alt="WHERES MY PICKLE" style={{ width: "5%", height: "5%" }} />
+                        <img src={'/images/pickle.png'} alt="WHERES MY PICKLE" style={{ width: "5%", height: "5%" }} />
                         <h1 style={{ color: "#95b73c" }}>PC PICKLE</h1>
                     </Button>
                     <div>

@@ -37,8 +37,8 @@ with app.app_context():
                   powerSupplyId=1,
                   networkCardId=1)
     case1 = Case(
-        name='Intel i7',
-        manufacturer='Intel',
+        name='Container for the ages',
+        manufacturer='Cooler Master',
         size=1,
         price=100)
     motherBoard1 = MotherBoard(
