@@ -48,10 +48,10 @@ function App() {
                 <AuthRoute exact path='/login' component={LoginPage} currentUserId={currentUser.id}/>
                 <Route exact path='/create/:part' component={CreatePart} currentUserId={currentUser.id}/>
                 <Route exact path='/createbuild' component={Build} currentUserId={currentUser.id}/>
-                <Route exact path='/:part' component={Parts} currentUserId={currentUser.id}/>
-                <Route exact path='/:part/:id' component={Part} currentUserId={currentUser.id}/>
                 <Route exact path='/builds' component={Builds} currentUserId={currentUser.id}/>
                 <Route exact path='/builds/:id' component={Build} currentUserId={currentUser.id}/>
+                <Route exact path='/:part' component={Parts} currentUserId={currentUser.id}/>
+                <Route exact path='/:part/:id' component={Part} currentUserId={currentUser.id}/>
                 <Route exact path='/' component={Home} currentUserId={currentUser.id}/>
             </Switch>
         </BrowserRouter>

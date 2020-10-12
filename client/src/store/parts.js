@@ -25,6 +25,13 @@ const createPart = (part) => ({
     part
 })
 
+const removePart = (partId) => {
+    return {
+        type: DELETE_PART,
+        partId,
+    };
+};
+
 
 export const fetchParts = () => {
     return async (dispatch) => {
@@ -67,6 +74,23 @@ export const makePart = (type, name, manufacturer, pictureUrl, price, size, cloc
     };
 }
 
+export const deletePart = (type, partId) => async dispatch => {
+    console.log(type)
+    debugger
+    const res = await fetch(`/api/parts/delete/${type}/${partId}`, {
+        method: "DELETE",
+        headers: {
+            "Content-Type": "application/json",
+        },
+    });
+    debugger
+
+    if (res.ok) {
+        dispatch(removePart(partId));
+    }
+
+    return res;
+}
 
 export default function partsReducer(state = {}, action) {
     Object.freeze(state);
@@ -76,6 +100,8 @@ export default function partsReducer(state = {}, action) {
         case GET_PART:
             return action.part;
         case CREATE_PART:
+            return action.part;
+        case DELETE_PART:
             return action.part;
         default:
             return state;

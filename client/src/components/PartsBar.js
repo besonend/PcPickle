@@ -5,7 +5,7 @@ import { makeStyles } from '@material-ui/core/styles';
 
 const useStyles = makeStyles((theme) => ({
     bar: {
-        backgroundColor: "#95b73c",
+        backgroundColor: "#fbc11a",
         justifyContent: "center",
         alignItems: "center",
     },
