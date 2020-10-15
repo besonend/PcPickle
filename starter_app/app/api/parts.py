@@ -231,13 +231,13 @@ def get_parts():
     hardDrives = db.session.query(HardDrive)
     powerSupplies = db.session.query(PowerSupply)
     gpus = db.session.query(GPU)
-    rams = db.session.query(RAM)
+    ram = db.session.query(RAM)
     networkCards = db.session.query(NetworkCard)
     coolers = db.session.query(Cooler)
     format_parts = {"mobos": {},
                     "cpus": {},
                     "cases": {},
-                    "rams": {},
+                    "ram": {},
                     "networkCards": {},
                     "powerSupplies": {},
                     "hardDrives": {},
@@ -257,8 +257,8 @@ def get_parts():
         format_parts["powerSupplies"][powerSupply.id] = powerSupply.to_dict()
     for gpu in gpus:
         format_parts["gpus"][gpu.id] = gpu.to_dict()
-    for ram in rams:
-        format_parts["rams"][ram.id] = ram.to_dict()
+    for ra in ram:
+        format_parts["ram"][ra.id] = ra.to_dict()
     for networkCard in networkCards:
         format_parts["networkCards"][networkCard.id] = networkCard.to_dict()
     return format_parts

@@ -23,7 +23,7 @@
   "scripts": {
     "start": "react-app-rewired start",
     "build": "react-scripts build",
-    "postbuild": "rm -rf ../starter_app/app/static && mv build ../starter_app/app/static",
+    "postbuild": "rm -rf ../starter_app/app/static && sudo mv build ../starter_app/app/static",
     "test": "react-app-rewired test",
     "eject": "react-scripts eject"
   },

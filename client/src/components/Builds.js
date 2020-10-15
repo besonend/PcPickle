@@ -1,4 +1,4 @@
-import { Button, Grid } from '@material-ui/core';
+import { Button } from '@material-ui/core';
 import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { makeStyles } from '@material-ui/core/styles';
@@ -18,7 +18,7 @@ function Builds() {
 
     useEffect(() => {
         dispatch(fetchBuilds(user))
-    }, [dispatch])
+    }, [dispatch, user])
 
     const builds = useSelector(state => state.buildsReducer)
     if (builds.builds === undefined) {
@@ -42,7 +42,7 @@ function Builds() {
                         <Button key={object.id} href={`/builds/${object.title}`} className={classes.link}>
                             <p>{object.title}</p>
                         </Button>
-                        <Button onClick={(e) => handleDelete(e, object.id)}>Delete</Button>
+                        <Button size="small" style={{ color: "red" }} onClick={(e) => handleDelete(e, object.id)}>X</Button>
                     </div>
                 )
             })}

@@ -15,7 +15,7 @@ function CreatePart() {
     const [size, setSize] = useState("");
     const [clockSpeed, setClockSpeed] = useState("");
     const [liquid, setLiquid] = useState(false);
-    const [SSD, setSSD] = useState("");
+    const [SSD, setSSD] = useState(false);
     const [gbSize, setgbSize] = useState("");
     const [VRAM, setVRAM] = useState("");
     const [watts, setWatts] = useState("");
@@ -59,6 +59,20 @@ function CreatePart() {
             </>
         )
     }
+    else if (type === 'hardDrives') {
+        createHTML = (
+            <>
+                <FormControl>
+                    <TextField type="number" placeholder="GBs" name="gbSize" value={gbSize} onChange={e => setgbSize(e.target.value)} />
+                </FormControl>
+                <FormControlLabel
+                    control={<Checkbox label="SSD?" name="SSD" value={SSD} onChange={() => setSSD(!SSD)} />}
+                    label="SSD?"
+                />
+
+            </>
+        )
+    }
     else if (type === 'coolers') {
         createHTML = (
             <>
@@ -67,6 +81,33 @@ function CreatePart() {
                     label="Liquid?"
                 />
 
+            </>
+        )
+    }
+    else if (type === 'gpus') {
+        createHTML = (
+            <>
+                <FormControl>
+                    <TextField type="number" placeholder="VRAM (GBs)" name="VRAM" value={VRAM} onChange={e => setVRAM(e.target.value)} />
+                </FormControl>
+            </>
+        )
+    }
+    else if (type === 'powerSupplies') {
+        createHTML = (
+            <>
+                <FormControl>
+                    <TextField type="number" placeholder="watts" name="watts" value={watts} onChange={e => setWatts(e.target.value)} />
+                </FormControl>
+            </>
+        )
+    }
+    else if (type === 'ram') {
+        createHTML = (
+            <>
+                <FormControl>
+                    <TextField type="number" placeholder="GBs per stick" name="gbSize" value={gbSize} onChange={e => setgbSize(e.target.value)} />
+                </FormControl>
             </>
         )
     }
