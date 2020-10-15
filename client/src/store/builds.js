@@ -17,6 +17,13 @@ const createBuild = (build) => ({
     build
 })
 
+const removeBuild = (buildId) => {
+    return {
+        type: DELETE_BUILD,
+        buildId
+    };
+};
+
 
 export const fetchBuilds = (userId) => {
     return async (dispatch) => {
@@ -30,8 +37,8 @@ export const fetchBuilds = (userId) => {
 export const makeBuild = (name) => {
     return async (dispatch) => {
         const csrfToken = Cookies.get("XSRF-TOKEN");
-        const res = await fetch(`/api/builds/create`, {
-            method: "post",
+        const res = await fetch(`/api/builds`, {
+            method: "POST",
             headers: {
                 "Content-Type": "application/json",
                 "X-CSRF-TOKEN": csrfToken,
@@ -47,6 +54,21 @@ export const makeBuild = (name) => {
     };
 }
 
+export const deleteBuild = (buildId) => async dispatch => {
+    const res = await fetch(`/api/builds/delete/${buildId}`, {
+        method: "DELETE",
+        headers: {
+            "Content-Type": "application/json",
+        },
+    });
+
+    if (res.ok) {
+        dispatch(removeBuild(buildId));
+    }
+
+    return res;
+}
+
 
 export default function buildsReducer(state = {}, action) {
     Object.freeze(state);
@@ -54,6 +76,8 @@ export default function buildsReducer(state = {}, action) {
         case GET_BUILDS:
             return action.builds;
         case CREATE_BUILD:
+            return action.build;
+        case DELETE_BUILD:
             return action.build;
         default:
             return state;

@@ -19,7 +19,7 @@ def get_builds(userId):
     return format_builds
 
 
-@builds.route("/create", methods=["POST"])
+@builds.route("/", methods=["POST"])
 def create_build():
     data = request.json
     new_build = Build(
@@ -40,3 +40,10 @@ def create_build():
     db.session.commit()
     format_build = new_build.to_dict()
     return {"build": format_build}
+
+
+@builds.route("/delete/<buildId>", methods=["DELETE"])
+def delete_build(buildId):
+    build = db.session.query(Build).filter(Build.id == buildId).first()
+    db.session.delete(build)
+    db.session.commit()

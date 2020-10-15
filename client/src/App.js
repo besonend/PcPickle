@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { BrowserRouter, Route, Switch } from 'react-router-dom';
-import {setUser} from './store/auth'
+import { setUser } from './store/auth'
 import SignupPage from './pages/SignupPage';
 import LoginPage from './pages/LoginPage';
 import { CssBaseline } from '@material-ui/core';
@@ -14,23 +14,23 @@ import PartsBar from './components/PartsBar';
 import Parts from './pages/Parts';
 import Part from './pages/Part';
 import Build from './pages/Build';
-import Builds from './pages/Builds';
+import Builds from './components/Builds';
 
 
 function App() {
   const [loading, setLoading] = useState(true)
   const dispatch = useDispatch()
-  useEffect(()=>{
-      const loadUser = async () => {
-        const res = await fetch("/api/session/current_user");
-        if (res.ok) {
-          res.data = await res.json(); // current user info
-          dispatch(setUser(res.data.user))
-        }
-        setLoading(false);
+  useEffect(() => {
+    const loadUser = async () => {
+      const res = await fetch("/api/session/current_user");
+      if (res.ok) {
+        res.data = await res.json(); // current user info
+        dispatch(setUser(res.data.user))
       }
-      loadUser();
-    }, [dispatch]);
+      setLoading(false);
+    }
+    loadUser();
+  }, [dispatch]);
 
   const currentUser = useSelector(state => state.auth.user);
 
@@ -39,22 +39,22 @@ function App() {
   }
   return (
     <>
-        <CssBaseline/>
-        <BrowserRouter>
-            <NavBar />
-            <PartsBar />
-            <Switch>
-                <AuthRoute exact path='/signup' component={SignupPage} currentUserId={currentUser.id}/>
-                <AuthRoute exact path='/login' component={LoginPage} currentUserId={currentUser.id}/>
-                <Route exact path='/create/:part' component={CreatePart} currentUserId={currentUser.id}/>
-                <Route exact path='/createbuild' component={Build} currentUserId={currentUser.id}/>
-                <Route exact path='/:part' component={Parts} currentUserId={currentUser.id}/>
-                <Route exact path='/:part/:id' component={Part} currentUserId={currentUser.id}/>
-                <Route exact path='/builds' component={Builds} currentUserId={currentUser.id}/>
-                <Route exact path='/builds/:id' component={Build} currentUserId={currentUser.id}/>
-                <Route exact path='/' component={Home} currentUserId={currentUser.id}/>
-            </Switch>
-        </BrowserRouter>
+      <CssBaseline />
+      <BrowserRouter>
+        <NavBar />
+        <PartsBar />
+        <Switch>
+          <Route exact path='/' component={Home} currentUserId={currentUser.id} />
+          <AuthRoute exact path='/signup' component={SignupPage} currentUserId={currentUser.id} />
+          <AuthRoute exact path='/login' component={LoginPage} currentUserId={currentUser.id} />
+          <Route exact path='/create/:part' component={CreatePart} currentUserId={currentUser.id} />
+          <Route exact path='/createbuild' component={Build} currentUserId={currentUser.id} />
+          <Route exact path='/builds' component={Builds} currentUserId={currentUser.id} />
+          <Route exact path='/builds/:id' component={Build} currentUserId={currentUser.id} />
+          <Route exact path='/:part' component={Parts} currentUserId={currentUser.id} />
+          <Route exact path='/:part/:id' component={Part} currentUserId={currentUser.id} />
+        </Switch>
+      </BrowserRouter>
     </>
   );
 }

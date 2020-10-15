@@ -7,7 +7,7 @@ import { makeStyles } from '@material-ui/core/styles';
 const useStyles = makeStyles((theme) => ({
 
     appbar: {
-        backgroundColor: "#553a0f",
+        backgroundColor: "#4d9699",
         margin: "0px",
         width: "100%",
     },
@@ -47,7 +47,7 @@ function NavBar() {
                     <Button href="/">Home</Button>
                     <Button>
                         <img src={'/images/pickle.png'} alt="WHERES MY PICKLE" style={{ width: "5%", height: "5%" }} />
-                        <h1 style={{ color: "#95b73c" }}>PC PICKLE</h1>
+                        <h1 style={{ color: "#5f6c11" }}>PC PICKLE</h1>
                     </Button>
                     <div>
                         {createBuild}

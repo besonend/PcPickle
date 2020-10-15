@@ -1,11 +1,11 @@
-import { Divider, Grid } from '@material-ui/core';
+import { Grid } from '@material-ui/core';
 import React from 'react';
 import { NavLink } from 'react-router-dom';
 import { makeStyles } from '@material-ui/core/styles';
 
 const useStyles = makeStyles((theme) => ({
     bar: {
-        backgroundColor: "#95b73c",
+        backgroundColor: "#fbc11a",
         justifyContent: "center",
         alignItems: "center",
     },
