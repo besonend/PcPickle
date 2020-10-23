@@ -1,4 +1,4 @@
-import { Button } from '@material-ui/core';
+import { Button, Divider, Grid } from '@material-ui/core';
 import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { makeStyles } from '@material-ui/core/styles';
@@ -32,20 +32,45 @@ function Builds() {
         document.location.reload();
     }
 
-
     return (
         <>
             <h2>Featured Builds:</h2>
-            {Object.values(builds.builds).map(object => {
-                return (
-                    <div key={object.id}>
-                        <Button key={object.id} href={`/builds/${object.title}`} className={classes.link}>
-                            <p>{object.title}</p>
-                        </Button>
-                        <Button size="small" style={{ color: "red" }} onClick={(e) => handleDelete(e, object.id)}>X</Button>
-                    </div>
-                )
-            })}
+            <Grid container>
+                {Object.values(builds.builds).map(object => {
+                    if (object.user_id === 1) {
+                        return (
+                            <Grid item xs={4} key={object.id}>
+                                <div key={object.id}>
+                                    <Button key={object.id} href={`/builds/${object.title}`} className={classes.link}>
+                                        <p>{object.title}</p>
+                                    </Button>
+                                    {(user === 1) ? <Button size="small" style={{ color: "red" }} onClick={(e) => handleDelete(e, object.id)}>X</Button> : ''}
+                                </div>
+                            </Grid>
+                        )
+                    }
+                    return '';
+                })}
+            </Grid>
+            <Divider />
+            <h2>Your Builds:</h2>
+            <Grid container>
+                {Object.values(builds.builds).map(object => {
+                    if (object.user_id === user) {
+                        return (
+                            <Grid item xs={4} key={object.id}>
+                                <div key={object.id}>
+                                    <Button key={object.id} href={`/builds/${object.title}`} className={classes.link}>
+                                        <p>{object.title}</p>
+                                    </Button>
+                                    <Button size="small" style={{ color: "red" }} onClick={(e) => handleDelete(e, object.id)}>X</Button>
+                                </div>
+                            </Grid>
+                        )
+                    }
+                    return '';
+                })}
+            </Grid>
         </>
     );
 }

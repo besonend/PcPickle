@@ -41,6 +41,26 @@ with app.app_context():
         manufacturer='Cooler Master',
         size=1,
         price=100)
+    case2 = Case(
+        name='Container for the Mages',
+        manufacturer='Cold',
+        size=2,
+        price=300)
+    case3 = Case(
+        name='Cone of Cold',
+        manufacturer='Cold',
+        size=3,
+        price=200)
+    case4 = Case(
+        name='Its really cold',
+        manufacturer='Cold',
+        size=2,
+        price=200)
+    case5 = Case(
+        name='Chilly AF',
+        manufacturer='Cold',
+        size=3,
+        price=300)
     motherBoard1 = MotherBoard(
         name='Sabertooth Z77',
         manufacturer='MSI',
@@ -54,22 +74,22 @@ with app.app_context():
     motherBoard3 = MotherBoard(
         name='MSI B450 GAMING PRO CARBON MAX',
         manufacturer='MSI',
-        size=1,
+        size=2,
         price=160)
     motherBoard4 = MotherBoard(
         name='MSI B450 TOMAHAWK MAX',
         manufacturer='MSI',
-        size=1,
+        size=3,
         price=158)
     motherBoard5 = MotherBoard(
         name='ASUS PRIME TRX40-PRO',
         manufacturer='ASUS',
-        size=1,
+        size=2,
         price=410)
     motherBoard6 = MotherBoard(
         name='ASRock TRX40 TAICHI',
         manufacturer='ASRock',
-        size=1,
+        size=3,
         price=500)
     cpu1 = CPU(
         name='Intel i7',
@@ -115,6 +135,10 @@ with app.app_context():
     db.session.add(soonmi)
     db.session.add(alissa)
     db.session.add(case1)
+    db.session.add(case2)
+    db.session.add(case3)
+    db.session.add(case4)
+    db.session.add(case5)
     db.session.add(motherBoard1)
     db.session.add(motherBoard2)
     db.session.add(motherBoard3)

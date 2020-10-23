@@ -10,7 +10,7 @@ builds = Blueprint('builds', __name__)
 def get_builds(userId):
     builds = db.session.query(Build).filter(Build.user_id == 1)
     format_builds = {"builds": {}, "userbuilds": {}}
-    if(userId != '1'):
+    if(userId != '1' and userId != 'null' and userId != 'undefined'):
         userbuilds = db.session.query(Build).filter(Build.user_id == userId)
         for userbuild in userbuilds:
             format_builds["userbuilds"][userbuild.id] = userbuild.to_dict()

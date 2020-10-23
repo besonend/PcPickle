@@ -52,7 +52,7 @@ export const login = (username, password) => async dispatch => {
     });
     const data = await res.json();
     if (res.ok && !data["errors"]) {
-        dispatch(setUser(data));
+        dispatch(setUser(data.user));
         res.data = data
     } else {
         res.errors = data["errors"]

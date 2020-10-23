@@ -15,11 +15,14 @@ import Parts from './pages/Parts';
 import Part from './pages/Part';
 import Build from './pages/Build';
 import Builds from './components/Builds';
+import CreateBuild from './pages/CreateBuild';
 
 
 function App() {
   const [loading, setLoading] = useState(true)
   const dispatch = useDispatch()
+  const stats = useSelector(state => state.auth.user);
+
   useEffect(() => {
     const loadUser = async () => {
       const res = await fetch("/api/session/current_user");
@@ -30,7 +33,7 @@ function App() {
       setLoading(false);
     }
     loadUser();
-  }, [dispatch]);
+  }, [dispatch, stats.id]);
 
   const currentUser = useSelector(state => state.auth.user);
 
@@ -48,7 +51,7 @@ function App() {
           <AuthRoute exact path='/signup' component={SignupPage} currentUserId={currentUser.id} />
           <AuthRoute exact path='/login' component={LoginPage} currentUserId={currentUser.id} />
           <Route exact path='/create/:part' component={CreatePart} currentUserId={currentUser.id} />
-          <Route exact path='/createbuild' component={Build} currentUserId={currentUser.id} />
+          <Route exact path='/createbuild' component={CreateBuild} currentUserId={currentUser.id} />
           <Route exact path='/builds' component={Builds} currentUserId={currentUser.id} />
           <Route exact path='/builds/:id' component={Build} currentUserId={currentUser.id} />
           <Route exact path='/:part' component={Parts} currentUserId={currentUser.id} />
