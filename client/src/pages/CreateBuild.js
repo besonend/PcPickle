@@ -40,6 +40,7 @@ function CreateBuild() {
 
     const handleClose = () => {
         setAnchorEl1(null);
+        setAnchorEl2(null);
         setAnchorEl3(null);
         setAnchorEl4(null);
         setAnchorEl5(null);
@@ -139,7 +140,112 @@ function CreateBuild() {
                                     }
                                 })}
                             </Menu>
-                            <Button type="submit">Create</Button>
+                            <Button aria-controls="cpus" aria-haspopup="true" onClick={(e) => setAnchorEl3(e.currentTarget)}>
+                                {(cpu === 'CPU') ? cpu : Object.values(part.cpus[cpu].name)}
+                            </Button>
+                            <Menu
+                                id="cpus"
+                                anchorEl={anchorEl3}
+                                keepMounted
+                                open={Boolean(anchorEl3)}
+                                onClose={handleClose}
+                            >
+                                {Object.values(part.cpus).map(object => {
+                                    return (
+                                        <MenuItem key={object.id} value={object.id} onClick={(e) => {
+                                            setCpu(e.target.value);
+                                            handleClose();
+                                        }}>
+                                            {object.name}
+                                        </MenuItem>
+                                    )
+                                })}
+                            </Menu>
+                            <Button aria-controls="gpus" aria-haspopup="true" onClick={(e) => setAnchorEl4(e.currentTarget)}>
+                                {(gpu === 'GPU') ? gpu : Object.values(part.gpus[gpu].name)}
+                            </Button>
+                            <Menu
+                                id="gpus"
+                                anchorEl={anchorEl4}
+                                keepMounted
+                                open={Boolean(anchorEl4)}
+                                onClose={handleClose}
+                            >
+                                {Object.values(part.gpus).map(object => {
+                                    return (
+                                        <MenuItem key={object.id} value={object.id} onClick={(e) => {
+                                            setGpu(e.target.value);
+                                            handleClose();
+                                        }}>
+                                            {object.name}
+                                        </MenuItem>
+                                    )
+                                })}
+                            </Menu>
+                            <Button aria-controls="coolers" aria-haspopup="true" onClick={(e) => setAnchorEl5(e.currentTarget)}>
+                                {(cooler === 'Cooler') ? cooler : Object.values(part.coolers[cooler].name)}
+                            </Button>
+                            <Menu
+                                id="coolers"
+                                anchorEl={anchorEl5}
+                                keepMounted
+                                open={Boolean(anchorEl5)}
+                                onClose={handleClose}
+                            >
+                                {Object.values(part.coolers).map(object => {
+                                    return (
+                                        <MenuItem key={object.id} value={object.id} onClick={(e) => {
+                                            setCooler(e.target.value);
+                                            handleClose();
+                                        }}>
+                                            {object.name}
+                                        </MenuItem>
+                                    )
+                                })}
+                            </Menu>
+                            <Button aria-controls="rams" aria-haspopup="true" onClick={(e) => setAnchorEl6(e.currentTarget)}>
+                                {(ram === 'RAM') ? ram : Object.values(part.ram[ram].name)}
+                            </Button>
+                            <Menu
+                                id="rams"
+                                anchorEl={anchorEl6}
+                                keepMounted
+                                open={Boolean(anchorEl6)}
+                                onClose={handleClose}
+                            >
+                                {Object.values(part.ram).map(object => {
+                                    return (
+                                        <MenuItem key={object.id} value={object.id} onClick={(e) => {
+                                            setRam(e.target.value);
+                                            handleClose();
+                                        }}>
+                                            {object.name}
+                                        </MenuItem>
+                                    )
+                                })}
+                            </Menu>
+                            <Button aria-controls="powers" aria-haspopup="true" onClick={(e) => setAnchorEl7(e.currentTarget)}>
+                                {(powerSupply === 'Power Supply') ? powerSupply : Object.values(part.powerSupplies[powerSupply].name)}
+                            </Button>
+                            <Menu
+                                id="powers"
+                                anchorEl={anchorEl7}
+                                keepMounted
+                                open={Boolean(anchorEl7)}
+                                onClose={handleClose}
+                            >
+                                {Object.values(part.powerSupplies).map(object => {
+                                    return (
+                                        <MenuItem key={object.id} value={object.id} onClick={(e) => {
+                                            setPowerSupply(e.target.value);
+                                            handleClose();
+                                        }}>
+                                            {object.name}
+                                        </MenuItem>
+                                    )
+                                })}
+                            </Menu>
+                            <Button type="submit" style={{backgroundColor: "#4d9699", color: "#fade98"}}>Create</Button>
                         </FormControl>
                     </form>
                 </Box>
