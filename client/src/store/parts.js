@@ -35,7 +35,7 @@ const removePart = (partId) => {
 
 export const fetchParts = () => {
     return async (dispatch) => {
-        const res = await fetch(`/api/parts`);
+        const res = await fetch('/api/parts/');
         const data = await res.json();
         dispatch(getParts(data));
         return res;

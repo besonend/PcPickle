@@ -14,12 +14,12 @@ const useStyles = makeStyles(() => ({
 
 
 function LoginPage() {
-    const classes = useStyles()
-    const dispatch = useDispatch()
-    const [username, setUsername] = useState("")
-    const [password, setPassword] = useState("")
-    const [errors, setErrors] = useState("")
-    const authErrors = useSelector(state => state.auth.errors)
+    const classes = useStyles();
+    const dispatch = useDispatch();
+    const [username, setUsername] = useState("");
+    const [password, setPassword] = useState("");
+    const [errors, setErrors] = useState("");
+    const authErrors = useSelector(state => state.auth.errors);
 
     useEffect(() => {
         dispatch(clearErrors())
@@ -41,7 +41,7 @@ function LoginPage() {
                 await dispatch(registerErrors({ "1": "Incorrect username or password!" }));
             }
             else {
-                document.location.reload();
+                window.location.href = "/";
             }
         }
     }
@@ -49,7 +49,7 @@ function LoginPage() {
     const demoLogin = async (e) => {
         e.preventDefault();
         await dispatch(login('DemoUser', 'password'));
-        document.location.reload();
+        window.location.href = "/";
     }
 
     return (

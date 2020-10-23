@@ -13,6 +13,8 @@ def cur_user():
     if current_user.is_authenticated:
         user = current_user.to_dict()
         return {"user": user}
+    else:
+        return {"user": "null"}
 
 
 @session.route("/", methods=["PUT"])

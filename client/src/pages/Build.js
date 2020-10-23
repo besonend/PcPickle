@@ -5,7 +5,7 @@ import React from 'react';
 function Build() {
     return (
         <>
-            <h1>Make a build</h1>
+            <h1>This is a build</h1>
         </>
     );
 }
