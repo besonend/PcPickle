@@ -245,6 +245,27 @@ function CreateBuild() {
                                     )
                                 })}
                             </Menu>
+                            <Button aria-controls="hardDrives" aria-haspopup="true" onClick={(e) => setAnchorEl8(e.currentTarget)}>
+                                {(hardDrive === 'Hard Drive') ? hardDrive : Object.values(part.hardDrives[hardDrive].name)}
+                            </Button>
+                            <Menu
+                                id="hardDrives"
+                                anchorEl={anchorEl8}
+                                keepMounted
+                                open={Boolean(anchorEl8)}
+                                onClose={handleClose}
+                            >
+                                {Object.values(part.hardDrives).map(object => {
+                                    return (
+                                        <MenuItem key={object.id} value={object.id} onClick={(e) => {
+                                            setHardDrive(e.target.value);
+                                            handleClose();
+                                        }}>
+                                            {object.name}
+                                        </MenuItem>
+                                    )
+                                })}
+                            </Menu>
                             <Button type="submit" style={{backgroundColor: "#4d9699", color: "#fade98"}}>Create</Button>
                         </FormControl>
                     </form>
