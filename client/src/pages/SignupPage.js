@@ -4,10 +4,10 @@ import { signup, registerErrors, clearErrors } from '../store/auth'
 import { useDispatch, useSelector } from 'react-redux';
 import { NavLink } from 'react-router-dom';
 import { makeStyles } from '@material-ui/core/styles';
-import Container from '@material-ui/core/Container';
 import TextField from '@material-ui/core/TextField';
 import Button from '@material-ui/core/Button';
 import Divider from '@material-ui/core/Divider';
+import { Box, FormControl, Grid } from '@material-ui/core';
 
 
 
@@ -85,26 +85,29 @@ function SignupPage() {
 
   return (
     <>
-      <div id="main-content-sign-up">
-        <Container fixed maxWidth="sm" classes={{ root: classes.container }}>
-          <h1 className="login-and-signup-header">Sign up for your account</h1>
-          <Divider style={{ width: "100%", margin: "10px" }} />
-          <div style={{ color: "red", display: "flex", flexDirection: "column", alignContent: "center" }}>
-            {errors ? errors.map((err, i) => {
-              return (<p style={{ marginTop: "3px", marginBottom: "3px" }} key={i}>{errors[i]}</p>)
-            }) : ""}
+      <Grid container style={{ justifyContent: "center", marginTop: "5%" }}>
+        <Box border={1} style={{ padding: "2%" }}>
+          <div id="main-content-sign-up">
+            <h1 className="login-and-signup-header">Sign up for your account</h1>
+            <Divider style={{ width: "100%", margin: "10px" }} />
+            <div style={{ color: "red", display: "flex", flexDirection: "column", alignContent: "center" }}>
+              {errors ? errors.map((err, i) => {
+                return (<p style={{ marginTop: "3px", marginBottom: "3px" }} key={i}>{errors[i]}</p>)
+              }) : ""}
+            </div>
+            <form className='signup-form' method="POST" action="/api/session" onSubmit={handleSubmit}>
+              <FormControl>
+                <TextField InputLabelProps={{ style: { color: "grey" } }} type="text" size="medium" placeholder="username" name="username" value={username} onChange={handleUsernameInput} />
+                <TextField InputLabelProps={{ style: { color: "grey" } }} type="text" size="medium" placeholder="email" name="email" value={email} onChange={handleEmailInput} />
+                <TextField InputLabelProps={{ style: { color: "grey" } }} type="password" size="medium" placeholder="password" name="password" value={password} onChange={handlePasswordInput} />
+                <TextField InputLabelProps={{ style: { color: "grey" } }} style={{ color: "red" }} type="password" size="medium" placeholder="confirm password" name="confirmPassword" value={confirmPassword} onChange={handleConfirmPasswordInput} />
+                <Button size="small" classes={{ root: classes.Button }} type="submit">Sign Up and Log In</Button>
+              </FormControl>
+            </form>
+            <NavLink id='login-navlink' to="/login"><p id="signUpText">Already have an account?  Log In</p></NavLink>
           </div>
-          <form className='signup-form' method="POST" action="/api/session" onSubmit={handleSubmit}>
-            <TextField InputLabelProps={{ style: { color: "grey" } }} type="text" size="medium" placeholder="username" name="username" value={username} onChange={handleUsernameInput} />
-            <TextField InputLabelProps={{ style: { color: "grey" } }} type="text" size="medium" placeholder="email" name="email" value={email} onChange={handleEmailInput} />
-            <TextField InputLabelProps={{ style: { color: "grey" } }} type="password" size="medium" placeholder="password" name="password" value={password} onChange={handlePasswordInput} />
-            <TextField InputLabelProps={{ style: { color: "grey" } }} style={{ color: "red" }} type="password" size="medium" placeholder="confirm password" name="confirmPassword" value={confirmPassword} onChange={handleConfirmPasswordInput} />
-            <Button size="small" classes={{ root: classes.Button }} type="submit">Sign Up and Log In</Button>
-          </form>
-          <Divider style={{ width: "100%", margin: "24px" }} />
-          <NavLink id='login-navlink' to="/login"><p id="signUpText">Already have an account?  Log In</p></NavLink>
-        </Container>
-      </div>
+        </Box>
+      </Grid>
     </>
   )
 }
