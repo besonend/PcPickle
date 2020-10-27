@@ -37,7 +37,7 @@ export const fetchBuilds = (userId) => {
 export const makeBuild = ( title, description, user_id, caseId, motherBoardId, cpuId, coolerId, hardDriveId, ramId, gpuId, powerSupplyId, networkCardId) => {
     return async (dispatch) => {
         const csrfToken = Cookies.get("XSRF-TOKEN");
-        const res = await fetch(`/api/builds`, {
+        const res = await fetch(`/api/builds/`, {
             method: "POST",
             headers: {
                 "Content-Type": "application/json",
