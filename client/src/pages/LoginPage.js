@@ -5,6 +5,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { NavLink } from 'react-router-dom';
 import { makeStyles } from '@material-ui/core/styles';
 import TextField from '@material-ui/core/TextField';
+import { Box, Button, FormControl, Grid } from '@material-ui/core';
 
 
 
@@ -54,25 +55,29 @@ function LoginPage() {
 
     return (
         <>
-            <div  className={classes.root} >
-                <h1>Welcome to Pickle</h1>
-                <div style={{ display: "flex", flexDirection: "column" }}>
-                    <button onClick={demoLogin}>Login As a Demo User</button>
-                </div>
-                <div style={{ color: "red", display: "flex", flexDirection: "column" }}>
-                    {errors ? errors.map((err, i) => {
-                        return (<p style={{ marginTop: "3px", marginBottom: "3px" }} key={i}>{errors[i]}</p>)
-                    }) : ""}
-                </div>
-                <form className='login-form' method="PUT" action="/api/session" onSubmit={handleSubmit}>
-                    <div>
-                        <TextField type="text" placeholder="username" name="username" value={username} onChange={e => setUsername(e.target.value)} />
-                        <TextField type="password" placeholder="password" name="password" value={password} onChange={e => setPassword(e.target.value)} />
+            <Grid container style={{ justifyContent: "center", marginTop: "5%" }}>
+                <Box border={1} style={{ padding: "2%" }}>
+                    <div className={classes.root} >
+                        <h1>Welcome to PC Pickle</h1>
+                        <div style={{ display: "flex", flexDirection: "column" }}>
+                            <button onClick={demoLogin}>Login As a Demo User</button>
+                        </div>
+                        <div style={{ color: "red", display: "flex", flexDirection: "column" }}>
+                            {errors ? errors.map((err, i) => {
+                                return (<p style={{ marginTop: "3px", marginBottom: "3px" }} key={i}>{errors[i]}</p>)
+                            }) : ""}
+                        </div>
+                        <form className='login-form' method="PUT" action="/api/session" onSubmit={handleSubmit}>
+                            <FormControl>
+                                <TextField type="text" placeholder="username" name="username" value={username} onChange={e => setUsername(e.target.value)} />
+                                <TextField type="password" placeholder="password" name="password" value={password} onChange={e => setPassword(e.target.value)} />
+                                <Button type="submit">Log in</Button>
+                            </FormControl>
+                        </form>
+                        <NavLink to="/signup"><p>Don't have an account?  Sign Up</p></NavLink>
                     </div>
-                    <button type="submit">Log in</button>
-                </form>
-                <NavLink to="/signup"><p>Don't have an account?  Sign Up</p></NavLink>
-            </div>
+                </Box>
+            </Grid>
         </>
 
     )

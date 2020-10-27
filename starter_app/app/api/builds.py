@@ -25,7 +25,7 @@ def create_build():
     new_build = Build(
         title=data['title'],
         description=data['description'],
-        user_id=data['userId'],
+        user_id=data['user_id'],
         caseId=data['caseId'],
         motherBoardId=data['motherBoardId'],
         cpuId=data['cpuId'],

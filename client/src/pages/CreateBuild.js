@@ -4,7 +4,7 @@ import Menu from '@material-ui/core/Menu';
 import TextField from '@material-ui/core/TextField';
 import { fetchParts } from '../store/parts';
 import { makeBuild } from '../store/builds';
-import { Box, Button, Checkbox, FormControl, FormControlLabel, Grid, InputLabel, MenuItem, Select } from '@material-ui/core';
+import { Box, Button, FormControl, Grid, MenuItem } from '@material-ui/core';
 
 
 function CreateBuild() {
@@ -91,17 +91,15 @@ function CreateBuild() {
                                             </MenuItem>
                                         )
                                     }
-                                    else {
-                                        if (object.size === part.mobos[motherBoard].size) {
-                                            return (
-                                                <MenuItem key={object.id} value={object.id} onClick={e => {
-                                                    setCase(e.target.value);
-                                                    handleClose();
-                                                }}>
-                                                    {object.name}
-                                                </MenuItem>
-                                            )
-                                        }
+                                    else if (object.size === part.mobos[motherBoard].size) {
+                                        return (
+                                            <MenuItem key={object.id} value={object.id} onClick={e => {
+                                                setCase(e.target.value);
+                                                handleClose();
+                                            }}>
+                                                {object.name}
+                                            </MenuItem>
+                                        )
                                     }
                                 })}
                             </Menu>
@@ -126,17 +124,15 @@ function CreateBuild() {
                                             </MenuItem>
                                         )
                                     }
-                                    else {
-                                        if (object.size === part.cases[Case].size) {
-                                            return (
-                                                <MenuItem key={object.id} value={object.id} onClick={(e) => {
-                                                    setMotherBoard(e.target.value);
-                                                    handleClose();
-                                                }}>
-                                                    {object.name}
-                                                </MenuItem>
-                                            )
-                                        }
+                                    else if (object.size === part.cases[Case].size) {
+                                        return (
+                                            <MenuItem key={object.id} value={object.id} onClick={(e) => {
+                                                setMotherBoard(e.target.value);
+                                                handleClose();
+                                            }}>
+                                                {object.name}
+                                            </MenuItem>
+                                        )
                                     }
                                 })}
                             </Menu>
@@ -245,7 +241,49 @@ function CreateBuild() {
                                     )
                                 })}
                             </Menu>
-                            <Button type="submit" style={{backgroundColor: "#4d9699", color: "#fade98"}}>Create</Button>
+                            <Button aria-controls="hardDrives" aria-haspopup="true" onClick={(e) => setAnchorEl8(e.currentTarget)}>
+                                {(hardDrive === 'Hard Drive') ? hardDrive : Object.values(part.hardDrives[hardDrive].name)}
+                            </Button>
+                            <Menu
+                                id="hardDrives"
+                                anchorEl={anchorEl8}
+                                keepMounted
+                                open={Boolean(anchorEl8)}
+                                onClose={handleClose}
+                            >
+                                {Object.values(part.hardDrives).map(object => {
+                                    return (
+                                        <MenuItem key={object.id} value={object.id} onClick={(e) => {
+                                            setHardDrive(e.target.value);
+                                            handleClose();
+                                        }}>
+                                            {object.name}
+                                        </MenuItem>
+                                    )
+                                })}
+                            </Menu>
+                            <Button aria-controls="networkCards" aria-haspopup="true" onClick={(e) => setAnchorEl9(e.currentTarget)}>
+                                {(networkCard === 'Network Card') ? networkCard : Object.values(part.networkCards[networkCard].name)}
+                            </Button>
+                            <Menu
+                                id="networkCards"
+                                anchorEl={anchorEl9}
+                                keepMounted
+                                open={Boolean(anchorEl9)}
+                                onClose={handleClose}
+                            >
+                                {Object.values(part.networkCards).map(object => {
+                                    return (
+                                        <MenuItem key={object.id} value={object.id} onClick={(e) => {
+                                            setNetworkCard(e.target.value);
+                                            handleClose();
+                                        }}>
+                                            {object.name}
+                                        </MenuItem>
+                                    )
+                                })}
+                            </Menu>
+                            <Button type="submit" style={{ backgroundColor: "#4d9699", color: "#fade98" }}>Create</Button>
                         </FormControl>
                     </form>
                 </Box>
