@@ -94,9 +94,9 @@ function Home() {
                                 return (
                                     <div key={object.id}>
                                         <Button key={object.id} href={`/cases/${object.id}`} className={classes.link}>
-                                            <img src={"/images/cases.png"} alt="Not Found" style={{ width: "7%", height: "7%" }} />
+                                            <img src={"/images/cases.png"} alt="" style={{ width: "7%", height: "7%" }} />
                                             <p>{object.name}</p>
-                                            {(user===1) ? <Button size="small" style={{ color: "red" }} onClick={(e) => handlePartDelete(e, 'cases', object.id)}>X</Button> : ''}
+                                            {(user === 1) ? <Button size="small" style={{ color: "red" }} onClick={(e) => handlePartDelete(e, 'cases', object.id)}>X</Button> : ''}
                                         </Button>
                                     </div>
                                 )
@@ -109,9 +109,9 @@ function Home() {
                                 return (
                                     <div key={object.id}>
                                         <Button key={object.id} href={`/mobos/${object.id}`} className={classes.link}>
-                                            <img src={"/images/mobos.png"} alt="Not Found" style={{ width: "7%", height: "7%" }} />
+                                            <img src={"/images/mobos.png"} alt="" style={{ width: "7%", height: "7%" }} />
                                             <p>{object.name}</p>
-                                            {(user===1) ? <Button size="small" style={{ color: "red" }} onClick={(e) => handlePartDelete(e, 'mobos', object.id)}>X</Button> : ''}
+                                            {(user === 1) ? <Button size="small" style={{ color: "red" }} onClick={(e) => handlePartDelete(e, 'mobos', object.id)}>X</Button> : ''}
                                         </Button>
 
                                     </div>
@@ -125,9 +125,9 @@ function Home() {
                                 return (
                                     <div key={object.id}>
                                         <Button key={object.id} href={`/cpus/${object.id}`} className={classes.link}>
-                                            <img src={"/images/cpus.png"} alt="Not Found" style={{ width: "7%", height: "7%" }} />
+                                            <img src={"/images/cpus.png"} alt="" style={{ width: "7%", height: "7%" }} />
                                             <p>{object.name}</p>
-                                            {(user===1) ? <Button size="small" style={{ color: "red" }} onClick={(e) => handlePartDelete(e, 'cpus', object.id)}>X</Button> : ''}
+                                            {(user === 1) ? <Button size="small" style={{ color: "red" }} onClick={(e) => handlePartDelete(e, 'cpus', object.id)}>X</Button> : ''}
                                         </Button>
                                     </div>
                                 )
@@ -140,9 +140,9 @@ function Home() {
                                 return (
                                     <div key={object.id}>
                                         <Button key={object.id} href={`/gpus/${object.id}`} className={classes.link}>
-                                            <img src={"/images/gpus.png"} alt="Not Found" style={{ width: "7%", height: "7%" }} />
+                                            <img src={"/images/gpus.png"} alt="" style={{ width: "7%", height: "7%" }} />
                                             <p>{object.name}</p>
-                                            {(user===1) ? <Button size="small" style={{ color: "red" }} onClick={(e) => handlePartDelete(e, 'gpus', object.id)}>X</Button> : ''}
+                                            {(user === 1) ? <Button size="small" style={{ color: "red" }} onClick={(e) => handlePartDelete(e, 'gpus', object.id)}>X</Button> : ''}
                                         </Button>
                                     </div>
                                 )
@@ -155,9 +155,9 @@ function Home() {
                                 return (
                                     <div key={object.id}>
                                         <Button key={object.id} href={`/powerSupplies/${object.id}`} className={classes.link}>
-                                            <img src={"/images/powerSupplies.png"} alt="Not Found" style={{ width: "7%", height: "7%" }} />
+                                            <img src={"/images/powerSupplies.png"} alt="" style={{ width: "7%", height: "7%" }} />
                                             <p>{object.name}</p>
-                                            {(user===1) ? <Button size="small" style={{ color: "red" }} onClick={(e) => handlePartDelete(e, 'powerSupplies', object.id)}>X</Button> : ''}
+                                            {(user === 1) ? <Button size="small" style={{ color: "red" }} onClick={(e) => handlePartDelete(e, 'powerSupplies', object.id)}>X</Button> : ''}
                                         </Button>
                                     </div>
                                 )
@@ -170,9 +170,9 @@ function Home() {
                                 return (
                                     <div key={object.id}>
                                         <Button key={object.id} href={`/hardDrives/${object.id}`} className={classes.link}>
-                                            <img src={"/images/hardDrives.png"} alt="Not Found" style={{ width: "7%", height: "7%" }} />
+                                            <img src={"/images/hardDrives.png"} alt="" style={{ width: "7%", height: "7%" }} />
                                             <p>{object.name}</p>
-                                            {(user===1) ? <Button size="small" style={{ color: "red" }} onClick={(e) => handlePartDelete(e, 'hardDrives', object.id)}>X</Button> : ''}
+                                            {(user === 1) ? <Button size="small" style={{ color: "red" }} onClick={(e) => handlePartDelete(e, 'hardDrives', object.id)}>X</Button> : ''}
                                         </Button>
                                     </div>
                                 )
@@ -185,9 +185,9 @@ function Home() {
                                 return (
                                     <div key={object.id}>
                                         <Button key={object.id} href={`/networkCards/${object.id}`} className={classes.link}>
-                                            <img src={"/images/networkCards.png"} alt="Not Found" style={{ width: "7%", height: "7%" }} />
+                                            <img src={"/images/networkCards.png"} alt="" style={{ width: "7%", height: "7%" }} />
                                             <p>{object.name}</p>
-                                            {(user===1) ? <Button size="small" style={{ color: "red" }} onClick={(e) => handlePartDelete(e, 'networkCards', object.id)}>X</Button> : ''}
+                                            {(user === 1) ? <Button size="small" style={{ color: "red" }} onClick={(e) => handlePartDelete(e, 'networkCards', object.id)}>X</Button> : ''}
                                         </Button>
                                     </div>
                                 )
@@ -200,9 +200,9 @@ function Home() {
                                 return (
                                     <div key={object.id}>
                                         <Button key={object.id} href={`/coolers/${object.id}`} className={classes.link}>
-                                            <img src={"/images/coolers.png"} alt="Not Found" style={{ width: "7%", height: "7%" }} />
+                                            <img src={"/images/coolers.png"} alt="" style={{ width: "7%", height: "7%" }} />
                                             <p>{object.name}</p>
-                                            {(user===1) ? <Button size="small" style={{ color: "red" }} onClick={(e) => handlePartDelete(e, 'coolers', object.id)}>X</Button> : ''}
+                                            {(user === 1) ? <Button size="small" style={{ color: "red" }} onClick={(e) => handlePartDelete(e, 'coolers', object.id)}>X</Button> : ''}
                                         </Button>
                                     </div>
                                 )
@@ -215,9 +215,9 @@ function Home() {
                                 return (
                                     <div key={object.id}>
                                         <Button key={object.id} href={`/ram/${object.id}`} className={classes.link}>
-                                            <img src={"/images/ram.png"} alt="Not Found" style={{ width: "7%", height: "7%" }} />
+                                            <img src={"/images/ram.png"} alt="" style={{ width: "7%", height: "7%" }} />
                                             <p>{object.name}</p>
-                                            {(user===1) ? <Button size="small" style={{ color: "red" }} onClick={(e) => handlePartDelete(e, 'ram', object.id)}>X</Button> : ''}
+                                            {(user === 1) ? <Button size="small" style={{ color: "red" }} onClick={(e) => handlePartDelete(e, 'ram', object.id)}>X</Button> : ''}
                                         </Button>
                                     </div>
                                 )

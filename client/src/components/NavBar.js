@@ -46,7 +46,7 @@ function NavBar() {
                 <Toolbar className={classes.space}>
                     <Button href="/">Home</Button>
                     <Button>
-                        <img src={'/images/pickle.png'} alt="WHERES MY PICKLE" style={{ width: "5%", height: "5%" }} />
+                        <img src={'/images/pickle.png'} alt="" style={{ width: "5%", height: "5%" }} />
                         <h1 style={{ color: "#5f6c11" }}>PC PICKLE</h1>
                     </Button>
                     <div>
