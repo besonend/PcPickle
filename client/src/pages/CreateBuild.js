@@ -31,7 +31,16 @@ function CreateBuild() {
     const [anchorEl7, setAnchorEl7] = useState('');
     const [anchorEl8, setAnchorEl8] = useState('');
     const [anchorEl9, setAnchorEl9] = useState('');
+    // const [total, setTotal] = useState([0, 0, 0, 0, 0, 0, 0, 0, 0]);
+    // const [sum, setSum] = useState(0);
 
+    function sumArr(array) {
+        let result = 0;
+        for (let i = 0; i<array.length; i++){
+            result+=array[i];
+        }
+        return result;
+    }
 
     useEffect(() => {
         dispatch(fetchParts())
@@ -71,7 +80,7 @@ function CreateBuild() {
                             <TextField placeholder={"Title"} value={title} onChange={(e) => setTitle(e.target.value)} />
                             <TextField placeholder={"Description"} value={description} onChange={(e) => setDescription(e.target.value)} />
                             <Button aria-controls="cases" aria-haspopup="true" onClick={(e) => setAnchorEl1(e.currentTarget)}>
-                                {(Case === 'Case') ? Case : Object.values(part.cases[Case].name)}
+                                {(Case === 'Case') ? Case : 'name: ' + part.cases[Case].name + ', price: ' + part.cases[Case].price }
                             </Button>
                             <Menu
                                 id="cases"
@@ -85,6 +94,8 @@ function CreateBuild() {
                                         return (
                                             <MenuItem key={object.id} value={object.id} onClick={e => {
                                                 setCase(e.target.value);
+                                                // setTotal(total.splice(0, 1, object.price));
+                                                // setSum(sumArr(total));
                                                 handleClose();
                                             }}>
                                                 {object.name}
@@ -104,7 +115,7 @@ function CreateBuild() {
                                 })}
                             </Menu>
                             <Button aria-controls="mobos" aria-haspopup="true" onClick={(e) => setAnchorEl2(e.currentTarget)}>
-                                {(motherBoard === 'Mother Board') ? motherBoard : Object.values(part.mobos[motherBoard].name)}
+                                {(motherBoard === 'Mother Board') ? motherBoard : 'name: ' + part.mobos[motherBoard].name + ', price: ' + part.mobos[motherBoard].price }
                             </Button>
                             <Menu
                                 id="mobos"
@@ -137,7 +148,7 @@ function CreateBuild() {
                                 })}
                             </Menu>
                             <Button aria-controls="cpus" aria-haspopup="true" onClick={(e) => setAnchorEl3(e.currentTarget)}>
-                                {(cpu === 'CPU') ? cpu : Object.values(part.cpus[cpu].name)}
+                                {(cpu === 'CPU') ? cpu : 'name: ' + part.cpus[cpu].name + ', price: ' + part.cpus[cpu].price }
                             </Button>
                             <Menu
                                 id="cpus"
@@ -158,7 +169,7 @@ function CreateBuild() {
                                 })}
                             </Menu>
                             <Button aria-controls="gpus" aria-haspopup="true" onClick={(e) => setAnchorEl4(e.currentTarget)}>
-                                {(gpu === 'GPU') ? gpu : Object.values(part.gpus[gpu].name)}
+                                {(gpu === 'GPU') ? gpu : 'name: ' + part.gpus[gpu].name + ', price: ' + part.gpus[gpu].price }
                             </Button>
                             <Menu
                                 id="gpus"
@@ -179,7 +190,7 @@ function CreateBuild() {
                                 })}
                             </Menu>
                             <Button aria-controls="coolers" aria-haspopup="true" onClick={(e) => setAnchorEl5(e.currentTarget)}>
-                                {(cooler === 'Cooler') ? cooler : Object.values(part.coolers[cooler].name)}
+                                {(cooler === 'Cooler') ? cooler : 'name: ' + part.coolers[cooler].name + ', price: ' + part.coolers[cooler].price }
                             </Button>
                             <Menu
                                 id="coolers"
@@ -200,7 +211,7 @@ function CreateBuild() {
                                 })}
                             </Menu>
                             <Button aria-controls="rams" aria-haspopup="true" onClick={(e) => setAnchorEl6(e.currentTarget)}>
-                                {(ram === 'RAM') ? ram : Object.values(part.ram[ram].name)}
+                                {(ram === 'RAM') ? ram : 'name: ' + part.ram[ram].name + ', price: ' + part.ram[ram].price }
                             </Button>
                             <Menu
                                 id="rams"
@@ -221,7 +232,7 @@ function CreateBuild() {
                                 })}
                             </Menu>
                             <Button aria-controls="powers" aria-haspopup="true" onClick={(e) => setAnchorEl7(e.currentTarget)}>
-                                {(powerSupply === 'Power Supply') ? powerSupply : Object.values(part.powerSupplies[powerSupply].name)}
+                                {(powerSupply === 'Power Supply') ? powerSupply : 'name: ' + part.powerSupplies[powerSupply].name + ', price: ' + part.powerSupplies[powerSupply].price }
                             </Button>
                             <Menu
                                 id="powers"
@@ -242,7 +253,7 @@ function CreateBuild() {
                                 })}
                             </Menu>
                             <Button aria-controls="hardDrives" aria-haspopup="true" onClick={(e) => setAnchorEl8(e.currentTarget)}>
-                                {(hardDrive === 'Hard Drive') ? hardDrive : Object.values(part.hardDrives[hardDrive].name)}
+                                {(hardDrive === 'Hard Drive') ? hardDrive : 'name: ' + part.hardDrives[hardDrive].name + ', price: ' + part.hardDrives[hardDrive].price }
                             </Button>
                             <Menu
                                 id="hardDrives"
@@ -263,7 +274,7 @@ function CreateBuild() {
                                 })}
                             </Menu>
                             <Button aria-controls="networkCards" aria-haspopup="true" onClick={(e) => setAnchorEl9(e.currentTarget)}>
-                                {(networkCard === 'Network Card') ? networkCard : Object.values(part.networkCards[networkCard].name)}
+                                {(networkCard === 'Network Card') ? networkCard : 'name: ' + part.networkCards[networkCard].name + ', price: ' + part.networkCards[networkCard].price }
                             </Button>
                             <Menu
                                 id="networkCards"
