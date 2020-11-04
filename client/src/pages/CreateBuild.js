@@ -11,6 +11,7 @@ function CreateBuild() {
     const dispatch = useDispatch();
     const [title, setTitle] = useState('');
     const [description, setDescription] = useState('');
+    const [pictureUrl, setPictureUrl] = useState('');
     const [Case, setCase] = useState('Case');
     const [motherBoard, setMotherBoard] = useState('Mother Board');
     const [cpu, setCpu] = useState('CPU');
@@ -62,7 +63,7 @@ function CreateBuild() {
     const handleSubmit = async (e) => {
         e.preventDefault();
         await dispatch(makeBuild(title, description, user_Id, Case, motherBoard, cpu,
-            cooler, hardDrive, ram, gpu, powerSupply, networkCard));
+            cooler, hardDrive, ram, gpu, powerSupply, networkCard, pictureUrl));
         window.location.href = "/";
     }
 
@@ -79,6 +80,7 @@ function CreateBuild() {
                         <FormControl>
                             <TextField placeholder={"Title"} value={title} onChange={(e) => setTitle(e.target.value)} />
                             <TextField placeholder={"Description"} value={description} onChange={(e) => setDescription(e.target.value)} />
+                            <TextField placeholder={"Picture Url"} value={pictureUrl} onChange={(e) => setPictureUrl(e.target.value)} />
                             <Button aria-controls="cases" aria-haspopup="true" onClick={(e) => setAnchorEl1(e.currentTarget)}>
                                 {(Case === 'Case') ? Case : 'name: ' + part.cases[Case].name + ', price: ' + part.cases[Case].price }
                             </Button>

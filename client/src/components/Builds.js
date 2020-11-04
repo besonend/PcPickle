@@ -25,7 +25,6 @@ function Builds() {
         return null;
     }
 
-
     const handleDelete = (e, buildId) => {
         e.preventDefault();
         dispatch(deleteBuild(buildId));
@@ -41,10 +40,13 @@ function Builds() {
                         return (
                             <Grid item xs={4} key={object.id}>
                                 <div key={object.id}>
-                                    <Button key={object.id} href={`/builds/${object.title}`} className={classes.link}>
-                                        <p>{object.title}</p>
-                                    </Button>
-                                    {(user === 1) ? <Button size="small" style={{ color: "red" }} onClick={(e) => handleDelete(e, object.id)}>X</Button> : ''}
+                                    <img src={object.pictureUrl} alt="oops" style={{ width: "35vh", height: "35vh" }} />
+                                    <div>
+                                        <Button key={object.id} href={`/builds/${object.title}`} className={classes.link}>
+                                            <p>{object.title}</p>
+                                        </Button>
+                                        {(user === 1) ? <Button size="small" style={{ color: "red" }} onClick={(e) => handleDelete(e, object.id)}>X</Button> : ''}
+                                    </div>
                                 </div>
                             </Grid>
                         )
@@ -55,15 +57,18 @@ function Builds() {
             <Divider />
             <h2>Your Builds:</h2>
             <Grid container>
-                {Object.values(builds.builds).map(object => {
+                {Object.values(builds.userbuilds).map(object => {
                     if (object.user_id === user) {
                         return (
                             <Grid item xs={4} key={object.id}>
                                 <div key={object.id}>
-                                    <Button key={object.id} href={`/builds/${object.title}`} className={classes.link}>
-                                        <p>{object.title}</p>
-                                    </Button>
-                                    <Button size="small" style={{ color: "red" }} onClick={(e) => handleDelete(e, object.id)}>X</Button>
+                                    <img src={object.pictureUrl} alt="oops" style={{ width: "35vh", height: "35vh" }} />
+                                    <div>
+                                        <Button key={object.id} href={`/builds/${object.title}`} className={classes.link}>
+                                            <p>{object.title}</p>
+                                        </Button>
+                                        <Button size="small" style={{ color: "red" }} onClick={(e) => handleDelete(e, object.id)}>X</Button>
+                                    </div>
                                 </div>
                             </Grid>
                         )

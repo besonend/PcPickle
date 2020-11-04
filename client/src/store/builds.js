@@ -34,7 +34,7 @@ export const fetchBuilds = (userId) => {
     };
 };
 
-export const makeBuild = ( title, description, user_id, caseId, motherBoardId, cpuId, coolerId, hardDriveId, ramId, gpuId, powerSupplyId, networkCardId) => {
+export const makeBuild = ( title, description, user_id, caseId, motherBoardId, cpuId, coolerId, hardDriveId, ramId, gpuId, powerSupplyId, networkCardId, pictureUrl) => {
     return async (dispatch) => {
         const csrfToken = Cookies.get("XSRF-TOKEN");
         const res = await fetch(`/api/builds/`, {
@@ -43,7 +43,7 @@ export const makeBuild = ( title, description, user_id, caseId, motherBoardId, c
                 "Content-Type": "application/json",
                 "X-CSRF-TOKEN": csrfToken,
             },
-            body: JSON.stringify({ title, description, user_id, caseId, motherBoardId, cpuId, coolerId, hardDriveId, ramId, gpuId, powerSupplyId, networkCardId })
+            body: JSON.stringify({ title, description, user_id, caseId, motherBoardId, cpuId, coolerId, hardDriveId, ramId, gpuId, powerSupplyId, networkCardId, pictureUrl })
         });
         const data = await res.json();
         if (res.ok) {
