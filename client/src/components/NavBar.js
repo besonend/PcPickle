@@ -45,8 +45,8 @@ function NavBar() {
             <AppBar position="static" className={classes.appbar}>
                 <Toolbar className={classes.space}>
                     <Button href="/">Home</Button>
-                    <Button>
-                        <img src={'/images/pickle.png'} alt="" style={{ width: "5%", height: "5%" }} />
+                    <Button href="/" style={{ marginBottom: "10px" }}>
+                        <img src={'https://cdn3.iconfinder.com/data/icons/vegetables-18/100/vegetable_colour-31-512.png'} alt="" style={{ width: "5%", height: "5%" }} />
                         <h1 style={{ color: "#5f6c11" }}>PC PICKLE</h1>
                     </Button>
                     <div>

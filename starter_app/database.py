@@ -26,6 +26,7 @@ with app.app_context():
                   lastName='user', email='alissa@aa.io', password='password')
     test1 = Build(title="Test Build",
                   description="My first build",
+                  pictureUrl="https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcThPF-wfQUdBWOLMfCMoADiYk1Hce1DnuXGkwrjqc3vp-CxPcfOnx3UdkTgjLSAT0RBolzjQwE6&usqp=CAc",
                   user_id=1,
                   caseId=1,
                   motherBoardId=1,
@@ -96,36 +97,137 @@ with app.app_context():
         manufacturer='Intel',
         clockSpeed=4,
         price=200)
+    cpu2 = CPU(
+        name='Intel Core i5-9600K Coffee Lake',
+        manufacturer='Intel',
+        clockSpeed=3.7,
+        price=200)
+    cpu3 = CPU(
+        name='Intel Core i9-9900K Coffee Lake',
+        manufacturer='Intel',
+        clockSpeed=3.6,
+        price=400)
+    cpu4 = CPU(
+        name='AMD RYZEN 5 3600 6-Core',
+        manufacturer='AMD',
+        clockSpeed=3.6,
+        price=200)
     cooler1 = Cooler(
         name='Super liquid cooler 9000',
         manufacturer='MSI',
         liquid=True,
         price=1000)
+    cooler2 = Cooler(
+        name='CORSAIR Hydro Series H100i RGB Plat',
+        manufacturer='CORSAIR',
+        liquid=True,
+        price=100)
+    cooler3 = Cooler(
+        name='Thermaltake TH240 ARGB',
+        manufacturer='Thermaltake',
+        liquid=True,
+        price=100)
+    cooler4 = Cooler(
+        name='ASUS ROG Strix LC 240 RGB White Edition',
+        manufacturer='Asus',
+        liquid=True,
+        price=189)
     hardDrive1 = HardDrive(
         name='Samsung 1TB NVMe',
         manufacturer='Samsung',
         SSD=True,
         gbSize=1000,
         price=250)
+    hardDrive2 = HardDrive(
+        name='Seagate BarraCuda ST2000DM008',
+        manufacturer='Seagate',
+        SSD=False,
+        gbSize=2000,
+        price=55)
+    hardDrive3 = HardDrive(
+        name='Intel 660p Series M.2 2280',
+        manufacturer='Intel',
+        SSD=True,
+        gbSize=2000,
+        price=225)
+    hardDrive4 = HardDrive(
+        name='XPG SPECTRIX RGB Gaming',
+        manufacturer='XPG',
+        SSD=True,
+        gbSize=4000,
+        price=700)
     ram1 = RAM(
         name='Corsair Pods',
         manufacturer='Corsair',
         gbSize=4,
         price=50)
+    ram2 = RAM(
+        name='CORSAIR Vengeance LPX ',
+        manufacturer='Corsair',
+        gbSize=8,
+        price=70)
+    ram3 = RAM(
+        name='XPG SPECTRIX D60G RGB Desktop Memory',
+        manufacturer='XPG',
+        gbSize=16,
+        price=150)
+    ram4 = RAM(
+        name='G.SKILL Ripjaws V Series',
+        manufacturer='G.SKILL',
+        gbSize=8,
+        price=62)
     gpu1 = GPU(
-        name='NVIDIA 3090 GTX',
-        manufacturer='NVIDIA',
-        VRAM=4,
-        price=2000)
+        name='EVGA GeForce RTX 3090',
+        manufacturer='EVGA',
+        VRAM=24,
+        price=1800)
+    gpu2 = GPU(
+        name='GIGABYTE GeForce RTX 2060',
+        manufacturer='GIGABYTE',
+        VRAM=6,
+        price=340)
+    gpu3 = GPU(
+        name='MSI Radeon RX 5600 XT DirectX',
+        manufacturer='MSI',
+        VRAM=6,
+        price=280)
+    gpu4 = GPU(
+        name='GIGABYTE Radeon RX 5700 XT',
+        manufacturer='GIGABYTE',
+        VRAM=8,
+        price=420)
+    gpu5 = GPU(
+        name='EVGA GeForce RTX 3080',
+        manufacturer='EVGA',
+        VRAM=10,
+        price=810)
     powerSupply1 = PowerSupply(
         name='Its a boy',
         manufacturer='Corsair',
         watts=850,
         price=180)
+    powerSupply2 = PowerSupply(
+        name='EVGA SuperNOVA 650 G3',
+        manufacturer='EVGA',
+        watts=650,
+        price=120)
+    powerSupply3 = PowerSupply(
+        name='Thermaltake Smart BM2',
+        manufacturer='Thermaltake',
+        watts=550,
+        price=80)
     networkCard1 = NetworkCard(
-        name='wireless thingy',
-        manufacturer='Samsung',
-        price=1)
+        name='EDUP WiFi 6 Card AX',
+        manufacturer='NURBENN',
+        price=30)
+    networkCard2 = NetworkCard(
+        name='Intel EXPI9301CTBLK',
+        manufacturer='Intel',
+        price=30)
+    networkCard3 = NetworkCard(
+        name='Rosewill RC-411v3',
+        manufacturer='Rosewill',
+        price=16)
 
     db.session.add(demo)
     db.session.add(ian)
@@ -146,12 +248,32 @@ with app.app_context():
     db.session.add(motherBoard5)
     db.session.add(motherBoard6)
     db.session.add(cpu1)
+    db.session.add(cpu2)
+    db.session.add(cpu3)
+    db.session.add(cpu4)
     db.session.add(cooler1)
+    db.session.add(cooler2)
+    db.session.add(cooler3)
+    db.session.add(cooler4)
     db.session.add(hardDrive1)
+    db.session.add(hardDrive2)
+    db.session.add(hardDrive3)
+    db.session.add(hardDrive4)
     db.session.add(ram1)
+    db.session.add(ram2)
+    db.session.add(ram3)
+    db.session.add(ram4)
     db.session.add(gpu1)
+    db.session.add(gpu2)
+    db.session.add(gpu3)
+    db.session.add(gpu4)
+    db.session.add(gpu5)
     db.session.add(powerSupply1)
+    db.session.add(powerSupply2)
+    db.session.add(powerSupply3)
     db.session.add(networkCard1)
+    db.session.add(networkCard2)
+    db.session.add(networkCard3)
     db.session.add(test1)
 
     db.session.commit()

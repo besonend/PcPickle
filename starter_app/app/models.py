@@ -54,6 +54,7 @@ class Build(db.Model):
     powerSupplyId = db.Column(db.Integer, db.ForeignKey("powerSupplies.id"))  # noqa
     networkCardId = db.Column(db.Integer, db.ForeignKey("networkCards.id"))
     user_id = db.Column(db.Integer, db.ForeignKey("users.id"))
+    pictureUrl = db.Column(db.String(5000))
 
     user = db.relationship("User", back_populates="build")
     case = db.relationship("Case", back_populates="build")
@@ -71,6 +72,7 @@ class Build(db.Model):
             "id": self.id,
             "title": self.title,
             "description": self.description,
+            "pictureUrl": self.pictureUrl,
             "user_id": self.user_id,
             "caseId": self.caseId,
             "motherBoardId": self.motherBoardId,

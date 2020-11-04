@@ -25,6 +25,7 @@ def create_build():
     new_build = Build(
         title=data['title'],
         description=data['description'],
+        pictureUrl=data['pictureUrl'],
         user_id=data['user_id'],
         caseId=data['caseId'],
         motherBoardId=data['motherBoardId'],
