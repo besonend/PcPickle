@@ -9,7 +9,6 @@ const useStyles = makeStyles((theme) => ({
     appbar: {
         backgroundColor: "#4d9699",
         margin: "0px",
-        width: "100%",
     },
 
     space: {

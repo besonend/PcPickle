@@ -4,8 +4,8 @@ import React from 'react';
 function Footer() {
     return (
         <>
-            <footer>
-                <h1>This is a footer</h1>
+            <footer style={{ textAlign: "center", backgroundColor: "grey"}}>
+                <a style={{ textAlign: "center", margin: "0", }}>LinkedIn</a>
             </footer>
         </>
     );
