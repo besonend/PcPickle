@@ -16,6 +16,7 @@ import Part from './pages/Part';
 import Build from './pages/Build';
 import Builds from './components/Builds';
 import CreateBuild from './pages/CreateBuild';
+import Footer from './components/Footer';
 
 
 function App() {
@@ -57,6 +58,7 @@ function App() {
           <Route exact path='/:part' component={Parts} currentUserId={currentUser.id} />
           <Route exact path='/:part/:id' component={Part} currentUserId={currentUser.id} />
         </Switch>
+        <Footer />
       </BrowserRouter>
     </>
   );
