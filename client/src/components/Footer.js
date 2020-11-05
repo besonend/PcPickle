@@ -5,7 +5,7 @@ import React from 'react';
 function Footer() {
     return (
         <>
-            <footer style={{ backgroundColor: "#4d9699" }}>
+            <footer style={{ marginTop: "10px", backgroundColor: "#4d9699" }}>
                 <Grid container>
                     <Grid item xs={4}></Grid>
                     <Grid item xs={4} style={{ textAlign: "center" }}>
