@@ -42,7 +42,7 @@ function Builds() {
                                 <div key={object.id}>
                                     <img src={object.pictureUrl} alt="oops" style={{ width: "35vh", height: "35vh" }} />
                                     <div>
-                                        <Button key={object.id} href={`/builds/${object.title}`} className={classes.link}>
+                                        <Button key={object.id} href={`/builds/${object.id}`} className={classes.link}>
                                             <p>{object.title}</p>
                                         </Button>
                                         {(user === 1) ? <Button size="small" style={{ color: "red" }} onClick={(e) => handleDelete(e, object.id)}>X</Button> : ''}
