@@ -19,6 +19,12 @@ def get_builds(userId):
     return format_builds
 
 
+@builds.route("/build/<id>")
+def get_build(id):
+    build = db.session.query(Build).filter(Build.id == id).first()
+    return build.to_dict()
+
+
 @builds.route("/", methods=["POST"])
 def create_build():
     data = request.json

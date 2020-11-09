@@ -1,6 +1,7 @@
 import Cookies from 'js-cookie'
 
 const GET_BUILDS = 'auth/GET_BUILDS';
+const GET_BUILD = 'auth/GET_BUILD';
 const DELETE_BUILD = 'auth/DELETE_BUILD';
 const CREATE_BUILD = 'auth/CREATE_BUILD';
 
@@ -11,6 +12,12 @@ const getBuilds = (builds) => {
     };
 };
 
+const getBuild = (build) => {
+    return {
+        type: GET_BUILD,
+        build,
+    };
+};
 
 const createBuild = (build) => ({
     type: CREATE_BUILD,
@@ -30,6 +37,15 @@ export const fetchBuilds = (userId) => {
         const res = await fetch(`/api/builds/${userId}`);
         const data = await res.json();
         dispatch(getBuilds(data));
+        return res;
+    };
+};
+
+export const fetchBuild = (id) => {
+    return async (dispatch) => {
+        const res = await fetch(`/api/builds/build/${id}`);
+        const data = await res.json();
+        dispatch(getBuild(data));
         return res;
     };
 };
@@ -75,6 +91,8 @@ export default function buildsReducer(state = {}, action) {
     switch (action.type) {
         case GET_BUILDS:
             return action.builds;
+            case GET_BUILD:
+                return action.build;
         case CREATE_BUILD:
             return action.build;
         case DELETE_BUILD:
