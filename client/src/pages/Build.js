@@ -35,18 +35,27 @@ function Build() {
         return null;
     }
 
-    console.log(build.caseId);
+    console.log(build);
     console.log(parts.cases[build.caseId]);
+
+    function tableBody(type, typeId, name) {
+        return (
+            <TableRow>
+                <TableCell>
+                    <Button>
+                        {parts[type][build[typeId]].name}
+                    </Button>
+                </TableCell>
+                <TableCell>{name}</TableCell>
+                <TableCell>{parts[type][build[typeId]].price}</TableCell>
+            </TableRow>
+        )
+    }
 
     return (
         <>
             <div style={{ textAlign: "center" }}>
-                <h1>This is a build</h1>
-                <h2>Case</h2>
-                <Button>
-                    <img src="https://cdn4.iconfinder.com/data/icons/computer-hardware-and-devices-1/512/desktop-512.png" alt="Why" style={{ width: "7%", height: "7%" }} />
-                    {parts.cases[build.caseId].name}
-                </Button>
+                <h1>{build.title}</h1>
                 <TableContainer component={Paper} style={{ width: "80%", marginLeft: "auto", marginRight: "auto" }}>
                     <Table>
                         <TableHead>
@@ -57,14 +66,15 @@ function Build() {
                             </TableRow>
                         </TableHead>
                         <TableBody>
-                            <TableRow>
-                                <TableCell>
-                                    <img src="https://cdn4.iconfinder.com/data/icons/computer-hardware-and-devices-1/512/desktop-512.png" alt="Why" style={{ width: "5%", height: "7%" }} />
-                                    <h4>{parts.cases[build.caseId].name}</h4>
-                                </TableCell>
-                                <TableCell></TableCell>
-                                <TableCell></TableCell>
-                            </TableRow>
+                            {tableBody('cases', 'caseId', 'Case')}
+                            {tableBody('mobos', 'motherBoardId', 'Mother Board')}
+                            {tableBody('cpus', 'cpuId', 'CPU')}
+                            {tableBody('coolers', 'coolerId', 'Cooler')}
+                            {tableBody('hardDrives', 'hardDriveId', 'Hard Drive')}
+                            {tableBody('ram', 'ramId', 'RAM')}
+                            {tableBody('gpus', 'gpuId', 'Graphics Card')}
+                            {tableBody('powerSupplies', 'powerSupplyId', 'Power Supply')}
+                            {tableBody('networkCards', 'networkCardId', 'Network Card')}
                         </TableBody>
                     </Table>
                 </TableContainer>
