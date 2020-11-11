@@ -10,6 +10,9 @@ import { Box, Button, FormControl, Grid } from '@material-ui/core';
 
 
 const useStyles = makeStyles(() => ({
+    root: {
+        textAlign: "center",
+    }
 
 }))
 
