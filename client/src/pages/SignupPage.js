@@ -85,7 +85,7 @@ function SignupPage() {
 
   return (
     <>
-      <Grid container style={{ justifyContent: "center", marginTop: "5%" }}>
+      <Grid container style={{ justifyContent: "center", textAlign: "center", marginTop: "5%" }}>
         <Box border={1} style={{ padding: "2%" }}>
           <div id="main-content-sign-up">
             <h1 className="login-and-signup-header">Sign up for your account</h1>
@@ -101,7 +101,7 @@ function SignupPage() {
                 <TextField InputLabelProps={{ style: { color: "grey" } }} type="text" size="medium" placeholder="email" name="email" value={email} onChange={handleEmailInput} />
                 <TextField InputLabelProps={{ style: { color: "grey" } }} type="password" size="medium" placeholder="password" name="password" value={password} onChange={handlePasswordInput} />
                 <TextField InputLabelProps={{ style: { color: "grey" } }} style={{ color: "red" }} type="password" size="medium" placeholder="confirm password" name="confirmPassword" value={confirmPassword} onChange={handleConfirmPasswordInput} />
-                <Button size="small" classes={{ root: classes.Button }} type="submit">Sign Up and Log In</Button>
+                <Button style={{ backgroundColor: "#fbc11a" }} type="submit">Sign Up and Log In</Button>
               </FormControl>
             </form>
             <NavLink id='login-navlink' to="/login"><p id="signUpText">Already have an account?  Log In</p></NavLink>
