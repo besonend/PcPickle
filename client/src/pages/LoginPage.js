@@ -62,9 +62,6 @@ function LoginPage() {
                 <Box border={1} style={{ padding: "2%" }}>
                     <div className={classes.root} >
                         <h1>Welcome to PC Pickle</h1>
-                        <div style={{ display: "flex", flexDirection: "column" }}>
-                            <button onClick={demoLogin}>Login As a Demo User</button>
-                        </div>
                         <div style={{ color: "red", display: "flex", flexDirection: "column" }}>
                             {errors ? errors.map((err, i) => {
                                 return (<p style={{ marginTop: "3px", marginBottom: "3px" }} key={i}>{errors[i]}</p>)
@@ -72,9 +69,10 @@ function LoginPage() {
                         </div>
                         <form className='login-form' method="PUT" action="/api/session" onSubmit={handleSubmit}>
                             <FormControl>
+                                <Button style={{backgroundColor: "#fbc11a", marginBottom: "10px"}} onClick={demoLogin}>Login As a Demo User</Button>
                                 <TextField type="text" placeholder="username" name="username" value={username} onChange={e => setUsername(e.target.value)} />
                                 <TextField type="password" placeholder="password" name="password" value={password} onChange={e => setPassword(e.target.value)} />
-                                <Button type="submit">Log in</Button>
+                                <Button style={{backgroundColor: "#fbc11a", marginTop: "10px"}} type="submit">Log in</Button>
                             </FormControl>
                         </form>
                         <NavLink to="/signup"><p>Don't have an account?  Sign Up</p></NavLink>
